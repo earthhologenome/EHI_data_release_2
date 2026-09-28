@@ -1,0 +1,94 @@
+# Metadata access
+
+The second data release is assembled from `ehi-core`, the EHI system of record.
+The collector uses the same authenticated API as the core editor, follows the
+links between fieldwork and bioinformatic records, and writes stable tab-separated
+tables for the remaining chapters. No Airtable token or table ID is required.
+
+## Authenticate and collect the release
+
+For an interactive run, set `EHI_CORE_EMAIL`; R will ask for the password using
+a non-echoing prompt. For a non-interactive render, set `EHI_CORE_EMAIL` and
+`EHI_CORE_PASSWORD`, or provide a current Firebase ID token in `EHI_CORE_TOKEN`.
+Credentials and tokens must not be committed to this repository.
+When both are configured, email/password sign-in takes precedence so a stale
+short-lived token does not prevent collection.
+
+```{r collect_metadata, warning=FALSE, comments="", message=TRUE}
+source("R/ehi_core.R")
+
+release <- "EHR02"
+release_metadata <- collect_ehi_core_release(release)
+metadata_audit <- audit_ehi_core_release(release_metadata)
+release_ready <- !any(metadata_audit$severity == "error")
+
+# Generate the current snapshot even when the audit contains known gaps. The
+# audit and the rendered warning below make its draft status explicit; callers
+# preparing a final release can retain the writer's default strict = TRUE.
+write_ehi_core_release(release_metadata, directory = "data", strict = FALSE)
+
+# Keep the object names used by the analysis chapters.
+datasets <- release_metadata$datasets
+rawdata_metadata <- release_metadata$rawdata_metadata
+sample_metadata <- release_metadata$sample_metadata
+capture_metadata <- release_metadata$capture_metadata
+specimen_metadata <- release_metadata$specimen_metadata
+sampling_metadata <- release_metadata$sampling_metadata
+host_metadata <- release_metadata$host_metadata
+assembly_metadata <- release_metadata$assembly_metadata
+genome_metadata <- release_metadata$genome_metadata
+
+release_metadata
+```
+
+```{r release_status, echo=FALSE, results="asis"}
+if (!release_ready) {
+  affected <- max(metadata_audit$affected[metadata_audit$severity == "error"])
+  cat(
+    "> **Draft metadata snapshot.** The live audit found blocking metadata gaps for ",
+    affected,
+    " hologenomes. The generated TSVs and summaries contain the live collection, with ",
+    "unavailable values left blank; they should be treated as draft outputs.\n",
+    sep = ""
+  )
+}
+```
+
+The API is paginated, and the collector applies release/link filters in
+`ehi-core` before downloading large tables such as MAGs. Re-running this chunk
+therefore creates a new, internally linked snapshot of the release rather than
+mixing records fetched at different times from Airtable views.
+
+## Metadata completeness audit
+
+The audit distinguishes blocking omissions from non-blocking warnings and
+known schema differences. It is also written to
+`data/EHR02_metadata_audit.tsv` with the release tables.
+
+```{r metadata_audit, warning=FALSE, comments="", message=FALSE}
+metadata_audit %>% tt()
+```
+
+The `ehi-core` schema contains the release membership and linked fields required by
+the statistics and visualisations in this book. Total, host and metagenomic gigabases
+are derived from preprocessing base counts; sample, capture, specimen and
+sampling-event relationships are derived from core links.
+
+Three columns from the historical Airtable sample export are not represented
+in `ehi-core`: sample origin, freshness, and time to freezing. They are retained
+as `NA` columns to keep the TSV interface stable. None is consumed by the
+current statistics or plots, so this does not block the second data release,
+but it does prevent complete metadata parity with the former sample table.
+
+## Output tables
+
+```{r metadata_table_counts, warning=FALSE, comments="", message=FALSE}
+tibble::tibble(
+  table = c("rawdata", "sample", "capture", "specimen", "sampling", "host", "assembly", "genome"),
+  rows = c(
+    nrow(rawdata_metadata), nrow(sample_metadata), nrow(capture_metadata),
+    nrow(specimen_metadata), nrow(sampling_metadata), nrow(host_metadata),
+    nrow(assembly_metadata), nrow(genome_metadata)
+  )
+) %>% tt()
+```

@@ -1,0 +1,687 @@
+specimen_id	host_species	sex	capture_id
+SD00132	Myodes glareolus	Male	SD0013201
+SD00133	Myodes glareolus	Male	SD0013301
+SD00134	Myodes glareolus	Female	SD0013401
+SD00135	Myodes glareolus	Female	SD0013501
+SD00136	Myodes glareolus	Male	SD0013601
+SD00137	Myodes glareolus	Male	SD0013701
+SD00138	Myodes glareolus	Female	SD0013801
+SD00139	Myodes glareolus	Male	SD0013901
+SD00140	Myodes glareolus	Female	SD0014001
+SD00141	Myodes glareolus	Male	SD0014101
+SD00144	Apodemus sylvaticus	Female	SD0014401
+SD00145	Apodemus sylvaticus	Male	SD0014501
+SD00146	Apodemus sylvaticus	Male	SD0014601
+SD00148	Apodemus sylvaticus	Female	SD0014801
+SD00150	Apodemus sylvaticus	Male	SD0015001
+SD00151	Apodemus sylvaticus	Male	SD0015101
+SD00154	Apodemus sylvaticus	Female	SD0015401
+SD00473	Plecotus auritus	Male	SD0047301
+SD00474	Plecotus auritus	Male	SD0047401
+SD00475	Plecotus auritus	Male	SD0047501
+SD00476	Plecotus auritus	Male	SD0047601
+SD00477	Plecotus auritus	Male	SD0047701
+SD00487	Plecotus auritus	Female	SD0048701
+SD00489	Plecotus auritus	Female	SD0048901
+SD00494	Plecotus auritus	Female	SD0049401
+SD00498	Plecotus auritus	Female	SD0049801
+SD00500	Plecotus auritus	Female	SD0050001
+SD00503	Plecotus auritus	Female	SD0050301
+SD00504	Plecotus auritus	Female	SD0050401
+SD00505	Plecotus auritus	Female	SD0050501
+SD00506	Plecotus auritus	Male	SD0050601
+SD00507	Plecotus auritus	Male	SD0050701
+SD00709	Plecotus auritus	Male	SD0070901
+SD00710	Plecotus auritus	Female	SD0071001
+SD00711	Plecotus auritus	Female	SD0071101
+SD00712	Plecotus auritus	Female	SD0071201
+SD00713	Plecotus auritus	Female	SD0071301
+SD00714	Plecotus auritus	Female	SD0071401
+SD00715	Plecotus auritus	Female	SD0071501
+SD00716	Plecotus auritus	Female	SD0071601
+SD00717	Plecotus auritus	Female	SD0071701
+SD00718	Plecotus auritus	Female	SD0071801
+SD00720	Plecotus auritus	Male	SD0072001
+SD00721	Plecotus auritus	Female	SD0072101
+SD00722	Plecotus auritus	Female	SD0072201
+SD00723	Plecotus auritus	Female	SD0072301
+SD00724	Plecotus auritus	Female	SD0072401
+SD00725	Plecotus auritus	Female	SD0072501
+SD00726	Plecotus auritus	Male	SD0072601
+SD00727	Plecotus auritus	Female	SD0072701
+SD00728	Plecotus auritus	Male	SD0072801
+SD00729	Plecotus auritus	Male	SD0072901
+SD00730	Plecotus auritus	Female	SD0073001
+SD00731	Plecotus auritus	Male	SD0073101
+SD00732	Plecotus auritus	Female	SD0073201
+SD00733	Plecotus auritus	Male	SD0073301
+SD00734	Plecotus auritus	Male	SD0073401
+SD00735	Plecotus auritus	Female	SD0073501
+SD00736	Plecotus auritus	Female	SD0073601
+SD00737	Plecotus auritus	Male	SD0073701
+SD00738	Plecotus auritus	Female	SD0073801
+SD00739	Plecotus auritus	Male	SD0073901
+SD00740	Plecotus auritus	Female	SD0074001
+SD00741	Plecotus auritus	Female	SD0074101
+SD00742	Plecotus auritus	Male	SD0074201
+SD00743	Plecotus auritus	Male	SD0074301
+SD00744	Plecotus auritus	Male	SD0074401
+SD00806	Iberolacerta bonnali	Female	SD0080601
+SD00807	Iberolacerta bonnali	Female	SD0080701
+SD00836	Iberolacerta bonnali	Male	SD0083601
+SD00839	Iberolacerta bonnali	Male	SD0083901
+SD00841	Iberolacerta bonnali	Male	SD0084101
+SD00894	Iberolacerta bonnali	Female	SD0089401
+SD00897	Iberolacerta bonnali	Male	SD0089701
+SD00899	Iberolacerta bonnali	Female	SD0089901
+SD00900	Iberolacerta bonnali	Male	SD0090001
+SD00901	Iberolacerta bonnali	Male	SD0090101
+SD00905	Iberolacerta aranica	Female	SD0090501
+SD00908	Iberolacerta aranica	Male	SD0090801
+SD00909	Iberolacerta aranica	Female	SD0090901
+SD00913	Iberolacerta aranica	Male	SD0091301
+SD00914	Iberolacerta aranica	Female	SD0091401
+SD00915	Iberolacerta aranica	Male	SD0091501
+SD00917	Iberolacerta aranica	Male	SD0091701
+SD00919	Iberolacerta aranica	Female	SD0091901
+SD00926	Iberolacerta aranica	Male	SD0092601
+SD00928	Iberolacerta aranica	Female	SD0092801
+SD01173	Sciurus vulgaris	Male	SD0117301, SD0117302
+SD01174	Sciurus vulgaris	Male	SD0117401
+SD01176	Sciurus vulgaris	Female	SD0117601
+SD01177	Sciurus vulgaris	Female	SD0117701
+SD01179	Sciurus vulgaris	Male	SD0117901
+SD01183	Plecotus auritus	Male	SD0118301
+SD01184	Plecotus auritus	Male	SD0118401
+SD01185	Plecotus auritus	Male	SD0118501
+SD01186	Plecotus auritus	Male	SD0118601
+SD01187	Plecotus auritus	Male	SD0118701
+SD01188	Plecotus auritus	Female	SD0118801
+SD01189	Plecotus auritus	Male	SD0118901
+SD01190	Plecotus auritus	Female	SD0119001
+SD01191	Plecotus auritus	Male	SD0119101
+SD01192	Plecotus auritus	Male	SD0119201
+SD01193	Plecotus auritus	Male	SD0119301
+SD01194	Plecotus auritus	Male	SD0119401
+SD01196	Plecotus auritus	Male	SD0119601
+SD01197	Plecotus auritus	Male	SD0119701
+SD01199	Plecotus auritus	Female	SD0119901
+SD01200	Plecotus auritus	Male	SD0120001
+SD01454	Lissotriton vulgaris	Male	SD0145401
+SD01455	Lissotriton vulgaris	Male	SD0145501
+SD01456	Lissotriton vulgaris	Male	SD0145601
+SD01457	Lissotriton vulgaris	Male	SD0145701
+SD01458	Lissotriton vulgaris	Male	SD0145801
+SD01459	Lissotriton vulgaris	Male	SD0145901
+SD01460	Lissotriton vulgaris	Male	SD0146001
+SD01461	Lissotriton vulgaris	Male	SD0146101
+SD01462	Lissotriton vulgaris	Male	SD0146201
+SD01463	Lissotriton vulgaris	Male	SD0146301
+SD01465	Lacerta viridis	Male	SD0146501
+SD01466	Lacerta viridis	Female	SD0146601
+SD01468	Lacerta viridis	Male	SD0146801
+SD01469	Lacerta viridis	Male	SD0146901
+SD01470	Lacerta viridis	Male	SD0147001
+SD01471	Lacerta viridis	Male	SD0147101
+SD01472	Lacerta viridis	Male	SD0147201
+SD01473	Lacerta viridis	Male	SD0147301
+SD01474	Lacerta viridis	Male	SD0147401
+SD01477	Lacerta viridis	Male	SD0147701
+SD01480	Salamandra atra	Female	SD0148001
+SD01481	Salamandra atra	Male	SD0148101
+SD01482	Salamandra atra	Male	SD0148201
+SD01485	Salamandra atra	Male	SD0148501
+SD01486	Salamandra atra	Male	SD0148601
+SD01487	Salamandra atra	Female	SD0148701
+SD01488	Salamandra atra	Female	SD0148801
+SD01489	Sciurus vulgaris	Male	SD0148901
+SD01494	Sciurus vulgaris	Male	SD0149401
+SD01498	Sciurus vulgaris	Female	SD0149801
+SD01501	Sciurus vulgaris	Male	SD0150101
+SD01502	Sciurus vulgaris	Male	SD0150201
+SD01504	Sciurus vulgaris	Male	SD0150401
+SD01509	Sciurus vulgaris	Male	SD0150901
+SD01534	Sciurus vulgaris	Female	SD0153401
+SD01536	Sciurus vulgaris	Female	SD0153601
+SD01597	Plecotus auritus	Female	SD0159701
+SD01598	Plecotus auritus	Female	SD0159801
+SD01604	Plecotus auritus	Female	SD0160401
+SD01610	Plecotus auritus	Female	SD0161001
+SD01611	Plecotus auritus	Female	SD0161101
+SD01839	Sciurus vulgaris	Male	SD0183901
+SD01841	Sciurus vulgaris	Male	SD0184101
+SD01842	Sciurus vulgaris	Female	SD0184201
+SD01843	Sciurus vulgaris	Male	SD0184301
+SD01846	Sciurus vulgaris	Female	SD0184601
+SD01852	Sciurus vulgaris	Male	SD0185201
+SD01877	Sciurus vulgaris	Female	SD0187701
+SD01878	Sciurus vulgaris	Female	SD0187801
+SD01879	Sciurus vulgaris	Female	SD0187901
+SD01880	Sciurus vulgaris	Female	SD0188001
+SD01881	Sciurus vulgaris	Female	SD0188101
+SD01882	Sciurus vulgaris	Male	SD0188201
+SD01883	Sciurus vulgaris	Male	SD0188301
+SD01884	Sciurus vulgaris	Female	SD0188401
+SD01885	Sciurus vulgaris	Male	SD0188501
+SD01886	Sciurus vulgaris	Male	SD0188601, SD0188603
+SD01887	Sciurus vulgaris	Female	SD0188701
+SD01888	Sciurus vulgaris	Female	SD0188801
+SD01889	Sciurus vulgaris	Female	SD0188901
+SD01890	Plecotus auritus	Male	SD0189001
+SD01891	Plecotus auritus	Male	SD0189101
+SD01892	Plecotus auritus	Male	SD0189201
+SD01895	Plecotus auritus	Male	SD0189501
+SD01903	Plecotus auritus	Male	SD0190301
+SD02046	Peromyscus maniculatus	Male	SD0204601
+SD02047	Peromyscus maniculatus	Female	SD0204701
+SD02048	Peromyscus maniculatus	Male	SD0204801
+SD02050	Peromyscus maniculatus	Female	SD0205001
+SD02051	Peromyscus maniculatus	Female	SD0205101
+SD02052	Peromyscus maniculatus	Male	SD0205201
+SD02055	Peromyscus maniculatus	Female	SD0205501
+SD02056	Peromyscus maniculatus	Female	SD0205601
+SD02058	Peromyscus maniculatus	Female	SD0205801
+SD02060	Peromyscus maniculatus	Male	SD0206001
+SD02061	Peromyscus maniculatus	Male	SD0206101
+SD02073	Peromyscus maniculatus	Male	SD0207301
+SD02074	Peromyscus maniculatus	Female	SD0207401
+SD02077	Peromyscus maniculatus	Female	SD0207701
+SD02092	Peromyscus maniculatus	Male	SD0209201
+SD02093	Peromyscus maniculatus	Male	SD0209301
+SD02117	Sciurus vulgaris	Female	SD0211701
+SD02121	Sciurus vulgaris	Female	SD0212101
+SD02147	Sciurus vulgaris	Male	SD0214701
+SD02148	Sciurus vulgaris	Female	SD0214801
+SD02157	Sciurus vulgaris	Female	SD0215701
+SD02407	Apodemus flavicollis	Male	SD0240701
+SD02409	Apodemus flavicollis	Female	SD0240901
+SD02417	Apodemus flavicollis	Female	SD0241701
+SD02420	Apodemus flavicollis	Female	SD0242001
+SD02496	Timon lepidus	Unknown	SD0249601
+SD02499	Timon lepidus	Female	SD0249901
+SD02508	Timon lepidus	Unknown	SD0250801
+SD02526	Timon lepidus	Unknown	SD0252601
+SD02540	Timon lepidus	Unknown	SD0254001
+SD02559	Timon lepidus	Male	SD0255901
+SD02561	Timon lepidus	Female	SD0256101
+SD02567	Timon lepidus	Unknown	SD0256701
+SD02571	Timon lepidus	Unknown	SD0257101
+SD02586	Timon lepidus	Unknown	SD0258601
+SD02589	Timon lepidus	Unknown	SD0258901
+SD02597	Psammodromus manuelae	Female	SD0259701
+SD02632	Psammodromus manuelae	Male	SD0263201
+SD02714	Sciurus vulgaris	Unknown	SD0271401
+SD02715	Sciurus vulgaris	Unknown	SD0271501
+SD02716	Sciurus vulgaris	Unknown	SD0271601
+SD02717	Sciurus vulgaris	Unknown	SD0271701
+SD02718	Sciurus vulgaris	Unknown	SD0271801
+SD02719	Sciurus vulgaris	Unknown	SD0271901
+SD02720	Sciurus vulgaris	Unknown	SD0272001
+SD02721	Sciurus vulgaris	Unknown	SD0272101
+SD02722	Sciurus vulgaris	Unknown	SD0272201
+SD02723	Sciurus vulgaris	Unknown	SD0272301
+SD02725	Sciurus vulgaris	Unknown	SD0272501
+SD02726	Sciurus vulgaris	Unknown	SD0272601
+SD02727	Sciurus vulgaris	Unknown	SD0272701
+SD02729	Myotis bechsteinii	Female	SD0272901
+SD02730	Myotis bechsteinii	Female	SD0273001
+SD02731	Myotis bechsteinii	Female	SD0273101
+SD02732	Myotis bechsteinii	Female	SD0273201
+SD02733	Myotis bechsteinii	Female	SD0273301
+SD02734	Myotis bechsteinii	Female	SD0273401
+SD02735	Myotis bechsteinii	Female	SD0273501
+SD02736	Myotis bechsteinii	Female	SD0273601
+SD02737	Myotis bechsteinii	Female	SD0273701
+SD02738	Myotis bechsteinii	Female	SD0273801
+SD02739	Myotis bechsteinii	Female	SD0273901
+SD02740	Myotis bechsteinii	Female	SD0274001
+SD02741	Myotis bechsteinii	Female	SD0274101
+SD02742	Myotis bechsteinii	Female	SD0274201
+SD02743	Myotis bechsteinii	Female	SD0274301
+SD02744	Myotis bechsteinii	Female	SD0274401
+SD02745	Myotis bechsteinii	Female	SD0274501
+SD02746	Myotis bechsteinii	Female	SD0274601
+SD02747	Myotis bechsteinii	Female	SD0274701
+SD02748	Myotis bechsteinii	Female	SD0274801
+SD02749	Myotis bechsteinii	Female	SD0274901
+SD02750	Myotis bechsteinii	Female	SD0275001
+SD02751	Myotis bechsteinii	Female	SD0275101
+SD02752	Myotis bechsteinii	Female	SD0275201
+SD02753	Myotis bechsteinii	Female	SD0275301
+SD02754	Myotis bechsteinii	Female	SD0275401
+SD02755	Myotis bechsteinii	Female	SD0275501
+SD02756	Myotis bechsteinii	Female	SD0275601
+SD02757	Myotis bechsteinii	Female	SD0275701
+SD02758	Myotis bechsteinii	Female	SD0275801
+SD02759	Myotis bechsteinii	Female	SD0275901
+SD02760	Myotis bechsteinii	Female	SD0276001
+SD02761	Myotis bechsteinii	Female	SD0276101
+SD02762	Myotis bechsteinii	Female	SD0276201
+SD02763	Myotis bechsteinii	Female	SD0276301
+SD02764	Myotis bechsteinii	Female	SD0276401
+SD02765	Myotis bechsteinii	Female	SD0276501
+SD02766	Myotis bechsteinii	Female	SD0276601
+SD02767	Myotis bechsteinii	Female	SD0276701
+SD02768	Myotis bechsteinii	Female	SD0276801
+SD02769	Myotis bechsteinii	Female	SD0276901
+SD02770	Myotis bechsteinii	Female	SD0277001
+SD02771	Myotis bechsteinii	Female	SD0277101
+SD02772	Myotis bechsteinii	Female	SD0277201
+SD02773	Myotis bechsteinii	Female	SD0277301
+SD02774	Myotis bechsteinii	Female	SD0277401
+SD02775	Myotis bechsteinii	Female	SD0277501
+SD02776	Myotis bechsteinii	Female	SD0277601
+SD02777	Myotis bechsteinii	Female	SD0277701
+SD02778	Myotis bechsteinii	Female	SD0277801
+SD02779	Myotis bechsteinii	Male	SD0277901
+SD02780	Myotis bechsteinii	Male	SD0278001
+SD02781	Myotis bechsteinii	Male	SD0278101
+SD02782	Myotis bechsteinii	Female	SD0278201
+SD02783	Myotis bechsteinii	Male	SD0278301
+SD02784	Myotis bechsteinii	Male	SD0278401
+SD02785	Myotis bechsteinii	Female	SD0278501
+SD02786	Myotis bechsteinii	Male	SD0278601
+SD02787	Myotis bechsteinii	Male	SD0278701
+SD02788	Myotis bechsteinii	Female	SD0278801
+SD02789	Myotis bechsteinii	Female	SD0278901
+SD02790	Myotis bechsteinii	Male	SD0279001
+SD02791	Myotis bechsteinii	Female	SD0279101
+SD02792	Myotis bechsteinii	Female	SD0279201
+SD02793	Myotis bechsteinii	Female	SD0279301
+SD02794	Myotis bechsteinii	Female	SD0279401
+SD02795	Myotis bechsteinii	Female	SD0279501
+SD02796	Myotis bechsteinii	Female	SD0279601
+SD02797	Myotis bechsteinii	Female	SD0279701
+SD02798	Myotis bechsteinii	Female	SD0279801
+SD02799	Myotis bechsteinii	Female	SD0279901
+SD02800	Myotis bechsteinii	Male	SD0280001
+SD02825	Trichosurus vulpecula	Unknown	SD0282501
+SD02826	Trichosurus vulpecula	Unknown	SD0282601
+SD02827	Trichosurus vulpecula	Unknown	SD0282701
+SD02828	Trichosurus vulpecula	Unknown	SD0282801
+SD02830	Trichosurus vulpecula	Unknown	SD0283001
+SD02831	Trichosurus vulpecula	Unknown	SD0283101
+SD02832	Trichosurus vulpecula	Unknown	SD0283201
+SD02846	Trichosurus vulpecula	Male	SD0284601
+SD02847	Trichosurus vulpecula	Male	SD0284701
+SD02848	Trichosurus vulpecula	Male	SD0284801
+SD02849	Trichosurus vulpecula	Male	SD0284901
+SD02850	Trichosurus vulpecula	Male	SD0285001
+SD02851	Trichosurus vulpecula	Unknown	SD0285101
+SD02852	Trichosurus vulpecula	Unknown	SD0285201
+SD02880	Trichosurus vulpecula	Female	SD0288001
+SD02881	Trichosurus vulpecula	Male	SD0288101
+SD02882	Trichosurus vulpecula	Female	SD0288201
+SD02883	Trichosurus vulpecula	Female	SD0288301
+SD02884	Trichosurus vulpecula	Unknown	SD0288401
+SD02886	Trichosurus vulpecula	Male	SD0288601
+SD02887	Trichosurus vulpecula	Male	SD0288701
+SD02888	Trichosurus vulpecula	Male	SD0288801
+SD02889	Trichosurus vulpecula	Female	SD0288901
+SD02890	Trichosurus vulpecula	Female	SD0289001
+SD02912	Lasiorhinus latifrons	Female	SD0291201
+SD02913	Lasiorhinus latifrons	Female	SD0291301
+SD02914	Lasiorhinus latifrons	Female	SD0291401
+SD02915	Lasiorhinus latifrons	Female	SD0291501
+SD02916	Lasiorhinus latifrons	Male	SD0291601
+SD02917	Lasiorhinus latifrons	Male	SD0291701
+SD02918	Lasiorhinus latifrons	Male	SD0291801
+SD02919	Lasiorhinus latifrons	Female	SD0291901
+SD02920	Lasiorhinus latifrons	Female	SD0292001
+SD02922	Lasiorhinus latifrons	Female	SD0292201
+SD02923	Lasiorhinus latifrons	Female	SD0292301
+SD02924	Lasiorhinus latifrons	Female	SD0292401
+SD02928	Lasiorhinus latifrons	Female	SD0292801
+SD02929	Lasiorhinus latifrons	Female	SD0292901
+SD02930	Lasiorhinus latifrons	Female	SD0293001
+SD02931	Lasiorhinus latifrons	Female	SD0293101
+SD02933	Lasiorhinus latifrons	Female	SD0293301
+SD02936	Lasiorhinus latifrons	Female	SD0293601
+SD02945	Cathartes aura	Male	SD0294501
+SD02946	Coragyps atratus	Female	SD0294601
+SD02947	Cathartes aura	Female	SD0294701
+SD02948	Cathartes aura	Female	SD0294801
+SD02949	Coragyps atratus	Male	SD0294901
+SD02950	Cathartes aura	Male	SD0295001
+SD02951	Cathartes aura	Female	SD0295101
+SD02952	Cathartes aura	Female	SD0295201
+SD02953	Cathartes aura	Female	SD0295301
+SD02956	Coragyps atratus	Male	SD0295601
+SD02958	Cathartes aura	Male	SD0295801
+SD02959	Cathartes aura	Male	SD0295901
+SD02960	Coragyps atratus	Female	SD0296001
+SD02961	Cathartes aura	Male	SD0296101
+SD02962	Cathartes aura	Male	SD0296201
+SD02963	Coragyps atratus	Female	SD0296301
+SD02964	Coragyps atratus	Female	SD0296401
+SD02965	Coragyps atratus	Female	SD0296501
+SD02966	Coragyps atratus	Female	SD0296601
+SD02967	Cathartes aura	Female	SD0296701
+SD02968	Coragyps atratus	Male	SD0296801
+SD02969	Coragyps atratus	Female	SD0296901
+SD02970	Coragyps atratus	Female	SD0297001
+SD02971	Coragyps atratus	Female	SD0297101
+SD02972	Coragyps atratus	Female	SD0297201
+SD02973	Coragyps atratus	Male	SD0297301
+SD02974	Coragyps atratus	Female	SD0297401
+SD02975	Coragyps atratus	Female	SD0297501
+SD02976	Cathartes aura	Female	SD0297601
+SD02977	Cathartes aura	Male	SD0297701
+SD02978	Cathartes aura	Female	SD0297801
+SD02979	Cathartes aura	Male	SD0297901
+SD02980	Cathartes aura	Female	SD0298001
+SD02981	Cathartes aura	Male	SD0298101
+SD03089	Apodemus sylvaticus	Female	SD0308901
+SD03091	Apodemus sylvaticus	Male	SD0309101
+SD03092	Apodemus sylvaticus	Female	SD0309201
+SD03093	Apodemus sylvaticus	Female	SD0309301
+SD03095	Apodemus sylvaticus	Male	SD0309501
+SD03097	Apodemus sylvaticus	Male	SD0309701
+SD03101	Apodemus sylvaticus	Male	SD0310101
+SD03186	Apodemus flavicollis	Unknown	SD0318601
+SD03187	Apodemus flavicollis	Unknown	SD0318701
+SD03188	Apodemus flavicollis	Unknown	SD0318801
+SD03190	Perisoreus infaustus	Unknown	SD0319002, SD0319003
+SD03191	Perisoreus infaustus	Unknown	SD0319102, SD0319103
+SD03192	Perisoreus infaustus	Unknown	SD0319202
+SD03193	Perisoreus infaustus	Unknown	SD0319301
+SD03194	Perisoreus infaustus	Unknown	SD0319401
+SD03195	Perisoreus infaustus	Unknown	SD0319501
+SD03196	Perisoreus infaustus	Unknown	SD0319601
+SD03197	Perisoreus infaustus	Unknown	SD0319701
+SD03199	Perisoreus infaustus	Unknown	SD0319901
+SD03200	Perisoreus infaustus	Unknown	SD0320001
+SD03201	Perisoreus infaustus	Unknown	SD0320102
+SD03202	Perisoreus infaustus	Unknown	SD0320201, SD0320202
+SD03203	Perisoreus infaustus	Unknown	SD0320301, SD0320302
+SD03208	Perisoreus infaustus	Unknown	SD0320801, SD0320802
+SD03217	Perisoreus infaustus	Unknown	SD0321701
+SD03219	Perisoreus infaustus	Unknown	SD0321901, SD0321902
+SD03225	Perisoreus infaustus	Unknown	SD0322501
+SD03227	Perisoreus infaustus	Unknown	SD0322701
+SD03264	Bombina sp.	Male	SD0326401
+SD03265	Bombina sp.	Female	SD0326501
+SD03266	Bombina sp.	Male	SD0326601
+SD03271	Bombina sp.	Male	SD0327101
+SD03273	Bombina sp.	Male	SD0327301
+SD03282	Bombina sp.	Male	SD0328201
+SD03284	Bombina sp.	Female	SD0328401
+SD03287	Bombina sp.	Male	SD0328701
+SD03288	Bombina sp.	Female	SD0328801
+SD03297	Bombina sp.	Female	SD0329701
+SD03298	Bombina sp.	Male	SD0329801
+SD03311	Bombina sp.	Male	SD0331101
+SD03312	Bombina sp.	Female	SD0331201
+SD03319	Bombina sp.	Male	SD0331901
+SD03320	Bombina sp.	Female	SD0332001
+SD03322	Bombina sp.	Female	SD0332201
+SD03323	Bombina sp.	Male	SD0332301
+SD03326	Bombina sp.	Male	SD0332601
+SD03327	Bombina sp.	Male	SD0332701
+SD03328	Bombina sp.	Male	SD0332801
+SD03334	Bombina sp.	Male	SD0333401
+SD03335	Bombina sp.	Female	SD0333501
+SD03336	Bombina sp.	Male	SD0333601
+SD03344	Bombina sp.	Male	SD0334401
+SD03345	Bombina sp.	Male	SD0334501
+SD03346	Bombina sp.	Female	SD0334601
+SD03350	Bombina sp.	Male	SD0335001
+SD03351	Bombina sp.	Male	SD0335101
+SD03353	Bombina sp.	Female	SD0335301
+SD03354	Bombina sp.	Female	SD0335401
+SD03355	Bombina sp.	Female	SD0335501
+SD03356	Bombina sp.	Female	SD0335601
+SD03395	Clethrionomys rutilus	Female	SD0339501
+SD03397	Clethrionomys rutilus	Female	SD0339701
+SD03399	Myodes rufocanus	Male	SD0339901
+SD03402	Clethrionomys rutilus	Female	SD0340201
+SD03404	Myodes rufocanus	Male	SD0340401
+SD03407	Clethrionomys rutilus	Female	SD0340701
+SD03408	Clethrionomys rutilus	Male	SD0340801
+SD03410	Myodes rufocanus	Female	SD0341001
+SD03411	Myodes rufocanus	Male	SD0341101
+SD03472	Bombina sp.	Male	SD0347201
+SD03480	Bombina sp.	Male	SD0348001
+SD03481	Bombina sp.	Female	SD0348101
+SD03483	Bombina sp.	Male	SD0348301
+SD03484	Bombina sp.	Male	SD0348401
+SD03485	Bombina sp.	Male	SD0348501
+SD03496	Perisoreus infaustus	Unknown	SD0349601
+SD03497	Perisoreus infaustus	Unknown	SD0349701
+SD03498	Perisoreus infaustus	Unknown	SD0349801
+SD03499	Perisoreus infaustus	Male	SD0349901
+SD03500	Perisoreus infaustus	Unknown	SD0350001
+SD03639	Psammodromus manuelae	Male	SD0363901
+SD03640	Psammodromus manuelae	Male	SD0364001
+SD03641	Psammodromus manuelae	Female	SD0364101
+SD03643	Psammodromus manuelae	Male	SD0364301
+SD03644	Psammodromus manuelae	Male	SD0364401
+SD03645	Psammodromus manuelae	Female	SD0364501
+SD03647	Psammodromus manuelae	Female	SD0364701
+SD03648	Psammodromus manuelae	Male	SD0364801
+SD03649	Psammodromus manuelae	Male	SD0364901
+SD03650	Psammodromus manuelae	Male	SD0365001
+SD03651	Psammodromus manuelae	Male	SD0365101
+SD03652	Psammodromus manuelae	Female	SD0365201
+SD03756	Plecotus auritus	Male	SD0375601
+SD03757	Plecotus auritus	Male	SD0375701
+SD03758	Plecotus auritus	Male	SD0375801
+SD03760	Plecotus auritus	Male	SD0376001
+SD03762	Plecotus auritus	Male	SD0376201
+SD03763	Plecotus auritus	Male	SD0376301
+SD03764	Plecotus auritus	Male	SD0376401
+SD03765	Plecotus auritus	Male	SD0376501
+SD03766	Plecotus auritus	Male	SD0376601
+SD03767	Plecotus auritus	Male	SD0376701
+SD03768	Plecotus auritus	Male	SD0376801
+SD04412	Salamandra salamandra gallaica	Male	SD0441201
+SD04413	Salamandra salamandra gallaica	Female	SD0441301
+SD04414	Salamandra salamandra gallaica	Male	SD0441401
+SD04415	Salamandra salamandra gallaica	Female	SD0441501
+SD04416	Salamandra salamandra gallaica	Male	SD0441601
+SD04417	Salamandra salamandra gallaica	Male	SD0441701
+SD04418	Salamandra salamandra gallaica	Male	SD0441801
+SD04419	Salamandra salamandra gallaica	Male	SD0441901
+SD04420	Salamandra salamandra gallaica	Male	SD0442001
+SD04421	Salamandra salamandra gallaica	Male	SD0442101
+SD04422	Salamandra salamandra gallaica	Male	SD0442201
+SD04423	Salamandra salamandra gallaica	Male	SD0442301
+SD04424	Salamandra salamandra gallaica	Male	SD0442401
+SD04425	Salamandra salamandra gallaica	Male	SD0442501
+SD04426	Salamandra salamandra gallaica	Male	SD0442601
+SD04427	Salamandra salamandra gallaica	Male	SD0442701
+SD04428	Salamandra salamandra gallaica	Male	SD0442801
+SD04429	Salamandra salamandra gallaica	Male	SD0442901
+SD04430	Salamandra salamandra gallaica	Male	SD0443001
+SD04431	Salamandra salamandra gallaica	Male	SD0443101
+SD04432	Salamandra salamandra gallaica	Male	SD0443201
+SD04433	Salamandra salamandra gallaica	Male	SD0443301
+SD04435	Salamandra salamandra gallaica	Male	SD0443501
+SD04436	Salamandra salamandra gallaica	Male	SD0443601
+SD04437	Salamandra salamandra gallaica	Male	SD0443701
+SD04438	Salamandra salamandra gallaica	Male	SD0443801
+SD04439	Salamandra salamandra gallaica	Male	SD0443901
+SD04440	Salamandra salamandra gallaica	Male	SD0444001
+SD04441	Salamandra salamandra gallaica	Male	SD0444101
+SD04442	Salamandra salamandra gallaica	Male	SD0444201
+SD04443	Salamandra salamandra gallaica	Male	SD0444301
+SD04444	Salamandra salamandra gallaica	Male	SD0444401
+SD04445	Salamandra salamandra gallaica	Male	SD0444501
+SD04446	Salamandra salamandra gallaica	Male	SD0444601
+SD04447	Salamandra salamandra gallaica	Male	SD0444701
+SD04448	Salamandra salamandra gallaica	Male	SD0444801
+SD04449	Salamandra salamandra gallaica	Male	SD0444901
+SD04450	Salamandra salamandra gallaica	Male	SD0445001
+SD04451	Salamandra salamandra gallaica	Male	SD0445101
+SD04453	Salamandra salamandra gallaica	Male	SD0445301
+SD04454	Salamandra salamandra gallaica	Male	SD0445401
+SD04455	Salamandra salamandra gallaica	Male	SD0445501
+SD04456	Salamandra salamandra gallaica	Male	SD0445601
+SD04457	Salamandra salamandra gallaica	Male	SD0445701
+SD04458	Salamandra salamandra gallaica	Male	SD0445801
+SD04459	Salamandra salamandra gallaica	Male	SD0445901
+SD04460	Salamandra salamandra gallaica	Male	SD0446001
+SD04461	Salamandra salamandra gallaica	Male	SD0446101
+SD04462	Salamandra salamandra gallaica	Male	SD0446201
+SD04463	Salamandra salamandra gallaica	Male	SD0446301
+SD04464	Salamandra salamandra gallaica	Male	SD0446401
+SD04465	Salamandra salamandra gallaica	Male	SD0446501
+SD04466	Salamandra salamandra gallaica	Male	SD0446601
+SD04470	Salamandra salamandra gallaica	Male	SD0447001
+SD04471	Salamandra salamandra gallaica	Male	SD0447101
+SD04472	Salamandra salamandra gallaica	Male	SD0447201
+SD04473	Salamandra salamandra gallaica	Male	SD0447301
+SD04474	Salamandra salamandra gallaica	Male	SD0447401
+SD04475	Salamandra salamandra gallaica	Male	SD0447501
+SD04476	Salamandra salamandra gallaica	Male	SD0447601
+SD04554	Trichosurus vulpecula	Unknown	SD0455401
+SD04555	Rattus rattus	Unknown	SD0455501
+SD04556	Trichosurus vulpecula	Female	SD0455601
+SD04557	Trichosurus vulpecula	Female	SD0455701
+SD04558	Rattus rattus	Unknown	SD0455801
+SD04559	Trichosurus vulpecula	Female	SD0455901
+SD04560	Trichosurus vulpecula	Female	SD0456001
+SD04561	Trichosurus vulpecula	Male	SD0456101
+SD04562	Trichosurus vulpecula	Female	SD0456201
+SD04565	Rattus rattus	Male	SD0456501
+SD04567	Trichosurus vulpecula	Male	SD0456701
+SD04574	Rattus rattus	Male	SD0457401
+SD04575	Trichosurus vulpecula	Male	SD0457501
+SD04576	Trichosurus vulpecula	Male	SD0457601
+SD04578	Trichosurus vulpecula	Male	SD0457801
+SD04579	Trichosurus vulpecula	Male	SD0457901
+SD04580	Trichosurus vulpecula	Female	SD0458001
+SD04582	Trichosurus vulpecula	Male	SD0458201
+SD04585	Trichosurus vulpecula	Male	SD0458501
+SD04587	Trichosurus vulpecula	Male	SD0458701
+SD04592	Trichosurus vulpecula	Male	SD0459201
+SD04597	Trichosurus vulpecula	Female	SD0459701
+SD04600	Rattus rattus	Male	SD0460001
+SD04601	Rattus rattus	Male	SD0460101
+SD04603	Trichosurus vulpecula	Male	SD0460301
+SD04604	Rattus rattus	Female	SD0460401
+SD04605	Rattus rattus	Female	SD0460501
+SD04606	Rattus rattus	Male	SD0460601
+SD04607	Trichosurus vulpecula	Male	SD0460701
+SD04608	Trichosurus vulpecula	Female	SD0460801
+SD04612	Trichosurus vulpecula	Male	SD0461201
+SD04613	Trichosurus vulpecula	Female	SD0461301
+SD04614	Rattus rattus	Male	SD0461401
+SD04618	Rattus rattus	Male	SD0461801
+SD04622	Trichosurus vulpecula	Female	SD0462201
+SD04625	Trichosurus vulpecula	Female	SD0462501
+SD04626	Trichosurus vulpecula	Female	SD0462601
+SD04627	Trichosurus vulpecula	Female	SD0462701
+SD04628	Trichosurus vulpecula	Male	SD0462801
+SD04630	Rattus lutreolus	Female	SD0463001
+SD04631	Rattus lutreolus	Male	SD0463101
+SD04632	Rattus lutreolus	Female	SD0463201
+SD04640	Rattus lutreolus	Female	SD0464001
+SD04641	Rattus lutreolus	Male	SD0464101
+SD04642	Rattus lutreolus	Female	SD0464201
+SD04644	Rattus lutreolus	Unknown	SD0464401
+SD04649	Trichosurus vulpecula	Female	SD0464901
+SD04650	Trichosurus vulpecula	Female	SD0465001
+SD04651	Trichosurus vulpecula	Male	SD0465101
+SD04654	Rattus rattus	Unknown	SD0465401
+SD04655	Rattus lutreolus	Female	SD0465501
+SD04656	Rattus lutreolus	Male	SD0465601
+SD04657	Rattus lutreolus	Male	SD0465701
+SD04658	Rattus rattus	Female	SD0465801
+SD04661	Trichosurus vulpecula	Female	SD0466101
+SD04665	Trichosurus vulpecula	Female	SD0466501
+SD04666	Rattus rattus	Female	SD0466601
+SD04668	Trichosurus vulpecula	Male	SD0466801
+SD04669	Trichosurus vulpecula	Female	SD0466901
+SD04670	Trichosurus vulpecula	Unknown	SD0467001
+SD04671	Rattus rattus	Male	SD0467101
+SD04672	Trichosurus vulpecula	Unknown	SD0467201
+SD04673	Rattus lutreolus	Female	SD0467301
+SD04674	Rattus rattus	Male	SD0467401
+SD04675	Rattus lutreolus	Female	SD0467501
+SD04676	Rattus lutreolus	Male	SD0467601
+SD04677	Trichosurus vulpecula	Female	SD0467701
+SD04681	Trichosurus vulpecula	Male	SD0468101
+SD04682	Trichosurus vulpecula	Unknown	SD0468201
+SD04683	Trichosurus vulpecula	Male	SD0468301
+SD04684	Trichosurus vulpecula	Female	SD0468401
+SD04685	Trichosurus vulpecula	Male	SD0468501
+SD04686	Trichosurus vulpecula	Male	SD0468601
+SD04687	Trichosurus vulpecula	Unknown	SD0468701
+SD04688	Trichosurus vulpecula	Female	SD0468801
+SD04689	Trichosurus vulpecula	Female	SD0468901
+SD04691	Vombatus ursinus	Unknown	SD0469101
+SD04692	Vombatus ursinus	Unknown	SD0469201
+SD04693	Vombatus ursinus	Unknown	SD0469301
+SD04694	Vombatus ursinus	Unknown	SD0469401
+SD04695	Vombatus ursinus	Unknown	SD0469501
+SD04696	Vombatus ursinus	Unknown	SD0469601
+SD04697	Vombatus ursinus	Unknown	SD0469701
+SD04698	Vombatus ursinus	Unknown	SD0469801
+SD04701	Vombatus ursinus	Unknown	SD0470101
+SD04702	Vombatus ursinus	Unknown	SD0470201
+SD04703	Vombatus ursinus	Unknown	SD0470301
+SD04704	Vombatus ursinus	Unknown	SD0470401
+SD04705	Vombatus ursinus	Unknown	SD0470501
+SD04706	Vombatus ursinus	Unknown	SD0470601
+SD04707	Vombatus ursinus	Unknown	SD0470701
+SD04767	Marmota flaviventris	Female	SD0476702
+SD04771	Marmota flaviventris	Male	SD0477101
+SD04772	Marmota flaviventris	Male	SD0477201
+SD04773	Marmota flaviventris	Male	SD0477301
+SD04781	Marmota flaviventris	Female	SD0478101
+SD04789	Marmota flaviventris	Male	SD0478901, SD0478902
+SD04791	Marmota flaviventris	Male	SD0479101
+SD04792	Marmota flaviventris	Male	SD0479201
+SD04793	Marmota flaviventris	Female	SD0479301
+SD04796	Marmota flaviventris	Female	SD0479601, SD0479602
+SD04797	Marmota flaviventris	Female	SD0479701
+SD04798	Marmota flaviventris	Female	SD0479801
+SD04800	Marmota flaviventris	Male	SD0480001
+SD04803	Marmota flaviventris	Male	SD0480301
+SD04804	Marmota flaviventris	Female	SD0480401
+SD04805	Marmota flaviventris	Male	SD0480501
+SD04806	Marmota flaviventris	Female	SD0480601
+SD04807	Marmota flaviventris	Female	SD0480701
+SD04808	Marmota flaviventris	Male	SD0480801
+SD04809	Marmota flaviventris	Female	SD0480901
+SD04810	Marmota flaviventris	Female	SD0481001
+SD05209	Myotis bechsteinii	Female	SD0520901
+SD05210	Myotis bechsteinii	Female	SD0521001
+SD05211	Myotis bechsteinii	Female	SD0521101
+SD05212	Myotis bechsteinii	Female	SD0521201
+SD05213	Myotis bechsteinii	Female	SD0521301
+SD05214	Myotis bechsteinii	Female	SD0521401
+SD05215	Myotis bechsteinii	Female	SD0521501
+SD05216	Myotis bechsteinii	Female	SD0521601
+SD05217	Myotis bechsteinii	Female	SD0521701
+SD05218	Myotis bechsteinii	Female	SD0521801
+SD05219	Myotis bechsteinii	Female	SD0521901
+SD05220	Myotis bechsteinii	Female	SD0522001
+SD05221	Myotis bechsteinii	Male	SD0522101
+SD05222	Myotis bechsteinii	Female	SD0522201
+SD05223	Myotis bechsteinii	Female	SD0522301
+SD05224	Myotis bechsteinii	Female	SD0522401
+SD05225	Myotis bechsteinii	Female	SD0522501
+SD05226	Myotis bechsteinii	Female	SD0522601
+SD05227	Myotis bechsteinii	Female	SD0522701
+SD05228	Myotis bechsteinii	Male	SD0522801
+SD05229	Myotis bechsteinii	Male	SD0522901
+SD05230	Myotis bechsteinii	Female	SD0523001
+SD05231	Myotis bechsteinii	Male	SD0523101
+SD05232	Myotis bechsteinii	Female	SD0523201
+SD05233	Myotis bechsteinii	Female	SD0523301
+SD05290	Canis familiaris	Male	SD0529001, SD0529002, SD0529003, SD0529004, SD0529005
+SD05291	Canis familiaris	Female	SD0529101, SD0529102, SD0529103, SD0529104, SD0529105
+SD05292	Canis familiaris	Female	SD0529201, SD0529202, SD0529203, SD0529204, SD0529205
+SD05293	Canis familiaris	Male	SD0529301, SD0529302, SD0529303, SD0529304, SD0529305, SD0529306, SD0529307
+SD05295	Canis familiaris	Male	SD0529501, SD0529502, SD0529503, SD0529504, SD0529505
+SD05296	Canis familiaris	Female	SD0529601, SD0529602, SD0529603, SD0529604
+SD05297	Canis familiaris	Male	SD0529701, SD0529702, SD0529703, SD0529704, SD0529705
+SD05298	Canis familiaris	Male	SD0529801, SD0529802, SD0529803, SD0529804, SD0529805
+SD05299	Canis familiaris	Male	SD0529901, SD0529902, SD0529903, SD0529904
+SD05300	Canis familiaris	Female	SD0530001, SD0530002, SD0530003, SD0530004
+SD05301	Canis familiaris	Male	SD0530101, SD0530102, SD0530103, SD0530104
+SD05302	Canis familiaris	Female	SD0530201, SD0530202, SD0530203, SD0530204
+SD05303	Canis familiaris	Male	SD0530301, SD0530302, SD0530303
+SD05304	Canis familiaris	Female	SD0530401, SD0530402, SD0530403

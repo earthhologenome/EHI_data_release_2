@@ -1,0 +1,1028 @@
+# Bacterial genome statistics
+
+```{r load_mag_metadata, warning=FALSE, comments="", message=FALSE}
+genome_metadata <- read_tsv(file=str_c("data/",release,"_genome.tsv"))
+assembly_metadata <- read_tsv(file=str_c("data/",release,"_assembly.tsv"))
+host_metadata <- read_tsv(file=str_c("data/",release,"_host.tsv"))
+
+# Coassemblies list several raw data files, so hosts are resolved per assembly
+assembly_host <- assembly_metadata %>%
+  separate_rows(rawdata_id, sep = ", ") %>%
+  left_join(summary_table %>% distinct(rawdata_id, host_species), by = "rawdata_id") %>%
+  distinct(assembly_id, host_species)
+```
+
+```{r ehi_colors, warning=FALSE, comments="", message=FALSE}
+
+phylum_colors <- read_tsv("https://raw.githubusercontent.com/earthhologenome/EHI_taxonomy_colour/main/ehi_phylum_colors.tsv") %>%
+    right_join(genome_metadata, by=join_by(phylum == phylum)) %>%
+    select(phylum, colors) %>% 
+    unique() %>%
+    arrange(phylum) %>%
+    pull(colors, name=phylum)
+```
+
+## Genome quantity
+
+```{r genome_quantity_stats, warning=FALSE, comments="", message=FALSE}
+genome_metadata %>%
+  nrow()
+```
+
+## Genome quality
+
+```{r genome_quality_stats, warning=FALSE, comments="", message=FALSE}
+genome_metadata %>%
+  summarise(completenes_mean=mean(completeness),
+            completenes_sd=sd(completeness),
+            contamination_mean=mean(contamination),
+            contamination_sd=sd(contamination)) %>% 
+  tt()
+```
+
+```{r genome_quality_plot, warning=FALSE, comments="", message=FALSE}
+
+#Generate quality biplot
+genome_biplot <- genome_metadata %>%
+  select(c(genome_id,domain,phylum,completeness,contamination,genome_size)) %>%
+  ggplot(aes(x=completeness,y=contamination,color=phylum)) +
+              geom_point(alpha=0.7, size=1) +
+                    ylim(c(10,0)) +
+                    scale_color_manual(values=phylum_colors) +
+                    labs(y= "Contamination", x = "Completeness") +
+                    theme_classic() +
+                    theme(legend.position = "none")
+
+#Generate contamination boxplot
+genome_contamination <- genome_metadata %>%
+            ggplot(aes(y=contamination)) +
+                    ylim(c(10,0)) +
+                    geom_boxplot(colour = "#999999", fill="#cccccc") +
+                    theme_void() +
+                    theme(legend.position = "none",
+                        axis.title.x = element_blank(),
+                        axis.title.y = element_blank(),
+                        axis.text.y=element_blank(),
+                        axis.ticks.y=element_blank(),
+                        axis.text.x=element_blank(),
+                        axis.ticks.x=element_blank(),
+                        plot.margin = unit(c(0, 0, 0.40, 0),"inches")) #add bottom-margin (top, right, bottom, left)
+
+#Generate completeness boxplot
+genome_completeness <- genome_metadata %>%
+        ggplot(aes(x=completeness)) +
+                xlim(c(50,100)) +
+                geom_boxplot(colour = "#999999", fill="#cccccc") +
+                theme_void() +
+                theme(legend.position = "none",
+                    axis.title.x = element_blank(),
+                    axis.title.y = element_blank(),
+                    axis.text.y=element_blank(),
+                    axis.ticks.y=element_blank(),
+                    axis.text.x=element_blank(),
+                    axis.ticks.x=element_blank(),
+                    plot.margin = unit(c(0, 0, 0, 0.50),"inches")) #add left-margin (top, right, bottom, left)
+
+#Render composite figure
+grid.arrange(grobs = list(genome_completeness,genome_biplot,genome_contamination),
+        layout_matrix = rbind(c(1,1,1,1,1,1,1,1,1,1,1,4),
+                              c(2,2,2,2,2,2,2,2,2,2,2,3),
+                              c(2,2,2,2,2,2,2,2,2,2,2,3),
+                              c(2,2,2,2,2,2,2,2,2,2,2,3),
+                              c(2,2,2,2,2,2,2,2,2,2,2,3),
+                              c(2,2,2,2,2,2,2,2,2,2,2,3),
+                              c(2,2,2,2,2,2,2,2,2,2,2,3),
+                              c(2,2,2,2,2,2,2,2,2,2,2,3),
+                              c(2,2,2,2,2,2,2,2,2,2,2,3),
+                              c(2,2,2,2,2,2,2,2,2,2,2,3),
+                              c(2,2,2,2,2,2,2,2,2,2,2,3),
+                              c(2,2,2,2,2,2,2,2,2,2,2,3)))
+```
+
+## Taxonomic statistics
+
+```{r genome_taxonomy_stats, warning=FALSE, comments="", message=FALSE}
+#phylum
+genome_metadata %>% 
+  group_by(phylum) %>%
+  summarise(genomes=n(),
+            completenes=mean(completeness),
+            contamination=mean(contamination),
+            size=mean(genome_size)/1000000) %>%
+  arrange(-genomes) %>%
+  filter(phylum != "p__") %>% 
+  tt()
+
+selected_phyla <- genome_metadata %>% 
+  group_by(phylum) %>%
+  summarise(genomes=n(),
+            completenes=mean(completeness),
+            contamination=mean(contamination),
+            size=mean(genome_size)/1000000) %>%
+  arrange(-genomes) %>%
+  filter(genomes > 0) %>% 
+  filter(phylum != "p__") %>% 
+  filter(phylum != "nan") %>% 
+  pull(phylum)
+
+#genus
+genome_metadata %>% 
+  group_by(genus) %>%
+  summarise(genomes=n(),
+            completenes=mean(completeness),
+            contamination=mean(contamination),
+            size=mean(genome_size)/1000000) %>%
+  arrange(-genomes) %>%
+  filter(genus != "g__") %>% 
+  tt()
+
+#top 100 genera
+genus_top100 <- genome_metadata %>% 
+  group_by(genus) %>%
+  summarise(genomes=n()) %>%
+  arrange(-genomes) %>%
+  filter(genus != "g__") %>% 
+  pull(genus) %>% 
+  head(n=100)
+```
+
+## New taxa discovery
+
+```{r genome_taxonomy_stats_newgenomes, warning=FALSE, comments="", message=FALSE}
+#species
+genome_metadata %>% 
+  mutate(novelty = if_else(is.na(species) | species == "s__", "new", "known")) %>% 
+  group_by(novelty) %>% 
+    summarise(
+      total_genomes = n(),
+      percentage = (total_genomes / nrow(genome_metadata)) * 100
+    ) %>% 
+  tt()
+
+#genus
+genome_metadata %>% 
+  mutate(novelty = if_else(is.na(genus) | genus == "g__", "new", "known")) %>% 
+  group_by(novelty) %>% 
+    summarise(
+      total_genomes = n(),
+      percentage = (total_genomes / nrow(genome_metadata)) * 100
+    ) %>% 
+  tt()
+
+#order
+genome_metadata %>% 
+  mutate(novelty = if_else(is.na(order) | order == "o__", "new", "known")) %>% 
+  group_by(novelty) %>% 
+    summarise(
+      total_genomes = n(),
+      percentage = (total_genomes / nrow(genome_metadata)) * 100
+    ) %>% 
+  tt()
+
+```
+
+```{r genome_taxonomy_stats_newgenomes_host, warning=FALSE, comments="", message=FALSE}
+#species
+genome_metadata %>% 
+  left_join(assembly_host,by="assembly_id") %>% 
+  mutate(novelty = if_else(is.na(species) | species == "s__", "new", "known")) %>%
+  group_by(host_species) %>%
+  summarise(
+    total_genomes = n(),
+    new_genomes = sum(novelty == "new"),
+    percentage_new = (new_genomes / total_genomes) * 100
+  ) %>%
+  arrange(desc(percentage_new)) %>% 
+  tt()
+```
+
+## Microbial phylogenies
+
+```{r genus_host_relationship, warning=FALSE, comments="", message=FALSE}
+genus_host <- genome_metadata %>% 
+  left_join(assembly_host,by="assembly_id") %>% 
+  select(phylum,genus,host_species) %>% 
+  filter(genus != "g__") %>% 
+  group_by(phylum,genus,host_species) %>% 
+  summarise(genomes=n()) %>% 
+  arrange(-genomes) %>% 
+  ungroup() 
+
+genus_host_spread <- genus_host %>% 
+    group_by(phylum,genus) %>% 
+    summarise(host_species=n()) %>% 
+    arrange(-host_species)
+
+plot_genus_tree <- function(tree, metadata, palette) {
+  genus_metadata <- metadata %>%
+    filter(phylum %in% selected_phyla, genus %in% tree$tip.label) %>%
+    count(genus, phylum, name = "count")
+
+  tips <- tibble(genus = tree$tip.label) %>%
+    left_join(genus_metadata, by = "genus")
+  tip_colors <- unname(palette[tips$phylum])
+  tip_colors[is.na(tip_colors)] <- "#454545"
+  abundance <- log1p(replace_na(tips$count, 0))
+  if (diff(range(abundance)) == 0) {
+    tip_size <- rep(1, length(abundance))
+  } else {
+    tip_size <- 0.5 + 1.5 * (abundance - min(abundance)) / diff(range(abundance))
+  }
+
+  ape::plot.phylo(
+    tree,
+    type = "fan",
+    show.tip.label = FALSE,
+    no.margin = TRUE,
+    edge.color = "#bdbdbd"
+  )
+  ape::tiplabels(pch = 21, bg = tip_colors, col = tip_colors, cex = tip_size)
+}
+
+```
+
+### Bacteria
+
+```{r genome_tree_bacteria, warning=FALSE, comments="", message=FALSE}
+
+gtdb_tree <- read_tree("data/bac120_r214.tree")
+
+gtdb_metadata <- read_tsv("data/bac120_taxonomy_r214.tsv.gz", col_names = FALSE) %>% 
+  rename(genome=1,classification=2) %>% 
+  separate(classification, c("domain","phylum","class","order","family","genus","species"),  sep =";")
+
+represented_genera <- gtdb_metadata %>% 
+  filter(genus %in% genus_host$genus) %>% 
+  filter(genome %in% gtdb_tree$tip.label) %>%
+  arrange(genus, genome) %>%
+  group_by(genus) %>%
+  slice_head(n = 1) %>%
+  ungroup()
+  
+ehi_bacteria_tree <- keep.tip(gtdb_tree, tip=represented_genera$genome)
+
+ehi_bacteria_tree$tip.label <- represented_genera %>%
+  filter(genome %in% ehi_bacteria_tree$tip.label) %>% # Keep only rows corresponding to tree tip labels
+  arrange(match(genome, ehi_bacteria_tree$tip.label)) %>% # Match order of genomes to tree tip labels
+  pull(genus)
+```
+
+```{r genome_tree_bacteria_plot, warning=FALSE, comments="", message=FALSE}
+pdf(
+  file=file.path("figure", "genome_tree_bacteria_plot-1.pdf"),
+  width=7,
+  height=7,
+  bg="white",
+  useDingbats=FALSE
+)
+plot_genus_tree(ehi_bacteria_tree, genome_metadata, phylum_colors)
+dev.off()
+
+plot_genus_tree(ehi_bacteria_tree, genome_metadata, phylum_colors)
+```
+
+```{r genome_tree_archaea, warning=FALSE, comments="", message=FALSE}
+
+gtdb_tree <- read_tree("data/ar53_r214.tree")
+
+gtdb_metadata <- read_tsv("data/ar53_taxonomy_r214.tsv.gz", col_names = FALSE) %>% 
+  rename(genome=1,classification=2) %>% 
+  separate(classification, c("domain","phylum","class","order","family","genus","species"),  sep =";")
+
+represented_genera <- gtdb_metadata %>% 
+  filter(genus %in% genus_host$genus) %>% 
+  filter(genome %in% gtdb_tree$tip.label) %>%
+  arrange(genus, genome) %>%
+  group_by(genus) %>%
+  slice_head(n = 1) %>%
+  ungroup()
+  
+ehi_archaea_tree <- keep.tip(gtdb_tree, tip=represented_genera$genome)
+
+ehi_archaea_tree$tip.label <- represented_genera %>%
+  filter(genome %in% ehi_archaea_tree$tip.label) %>% # Keep only rows corresponding to tree tip labels
+  arrange(match(genome, ehi_archaea_tree$tip.label)) %>% # Match order of genomes to tree tip labels
+  pull(genus)
+```
+
+```{r genome_tree_archaea_plot, warning=FALSE, comments="", message=FALSE}
+pdf(
+  file=file.path("figure", "genome_tree_archaea_plot-1.pdf"),
+  width=7,
+  height=7,
+  bg="white",
+  useDingbats=FALSE
+)
+plot_genus_tree(ehi_archaea_tree, genome_metadata, phylum_colors)
+dev.off()
+
+plot_genus_tree(ehi_archaea_tree, genome_metadata, phylum_colors)
+```
+
+### Annotated bacterial and archaeal genus trees
+
+```{r genome_tree_annotated, fig.cap="Phylogenetic distribution of bacterial and archaeal genera reconstructed in EHR02. Branch and tip colours indicate phylum, while tip area scales with the number of MAGs assigned to each genus. Labels identify the 15 most abundant bacterial phyla; the side summaries report archaeal and less abundant bacterial phyla.", warning=FALSE, comments="", message=FALSE, fig.width=13, fig.height=10, out.width="100%", dpi=300}
+format_mag_count <- function(x) {
+  format(x, big.mark=",", scientific=FALSE, trim=TRUE)
+}
+
+genus_tree_tip_data <- function(tree, metadata) {
+  genus_counts <- metadata %>%
+    filter(!is.na(genus), genus != "g__", genus %in% tree$tip.label) %>%
+    count(genus, phylum, name="genomes") %>%
+    arrange(genus, desc(genomes)) %>%
+    group_by(genus) %>%
+    slice_head(n=1) %>%
+    ungroup()
+
+  tibble(genus=tree$tip.label) %>%
+    left_join(genus_counts, by="genus") %>%
+    mutate(
+      phylum=replace_na(phylum, "Unclassified"),
+      genomes=replace_na(genomes, 0L)
+    )
+}
+
+genus_tree_edge_colors <- function(tree, tip_phyla, palette) {
+  children <- split(tree$edge[, 2], tree$edge[, 1])
+  descendant_phyla <- vector("list", Ntip(tree) + tree$Nnode)
+
+  find_descendant_phyla <- function(node) {
+    if (!is.null(descendant_phyla[[node]])) {
+      return(descendant_phyla[[node]])
+    }
+
+    node_phyla <- if (node <= Ntip(tree)) {
+      tip_phyla[[node]]
+    } else {
+      unique(unlist(
+        lapply(children[[as.character(node)]], find_descendant_phyla),
+        use.names=FALSE
+      ))
+    }
+    descendant_phyla[[node]] <<- node_phyla
+    node_phyla
+  }
+
+  edge_phyla <- vapply(
+    tree$edge[, 2],
+    function(node) {
+      node_phyla <- find_descendant_phyla(node)
+      if (length(node_phyla) == 1) node_phyla else NA_character_
+    },
+    character(1)
+  )
+
+  edge_colors <- unname(palette[edge_phyla])
+  edge_colors[is.na(edge_colors)] <- "#98a2b3"
+  edge_colors
+}
+
+genus_tip_cex <- function(genomes, maximum) {
+  0.32 + 2.35 * sqrt(pmax(genomes, 0) / maximum)
+}
+
+spread_label_y <- function(y, lower, upper, gap) {
+  if (length(y) < 2) {
+    return(pmin(pmax(y, lower), upper))
+  }
+
+  order_y <- order(y)
+  adjusted <- pmin(pmax(y[order_y], lower), upper)
+  for (index in seq.int(2, length(adjusted))) {
+    adjusted[[index]] <- max(adjusted[[index]], adjusted[[index - 1]] + gap)
+  }
+  if (tail(adjusted, 1) > upper) {
+    adjusted <- adjusted - (tail(adjusted, 1) - upper)
+  }
+  for (index in seq.int(length(adjusted) - 1, 1)) {
+    adjusted[[index]] <- min(adjusted[[index]], adjusted[[index + 1]] - gap)
+  }
+  if (adjusted[[1]] < lower) {
+    adjusted <- adjusted + (lower - adjusted[[1]])
+  }
+
+  output <- numeric(length(y))
+  output[order_y] <- adjusted
+  output
+}
+
+draw_genus_fan <- function(
+    tree,
+    metadata,
+    palette,
+    maximum_genomes,
+    x_padding=1.16,
+    y_padding=1.16) {
+  tree <- reorder.phylo(tree, order="cladewise")
+  tip_data <- genus_tree_tip_data(tree, metadata)
+  edge_colors <- genus_tree_edge_colors(tree, tip_data$phylum, palette)
+  tip_colors <- unname(palette[tip_data$phylum])
+  tip_colors[is.na(tip_colors)] <- "#667085"
+
+  overlay_plot <- par("new")
+  preview <- local({
+    pdf(NULL)
+    on.exit(dev.off(), add=TRUE)
+    plot.phylo(
+      tree,
+      type="fan",
+      show.tip.label=FALSE,
+      plot=FALSE
+    )
+    get("last_plot.phylo", envir=.PlotPhyloEnv)
+  })
+  preview_radius <- max(sqrt(preview$xx^2 + preview$yy^2))
+  par(new=overlay_plot)
+
+  plot.phylo(
+    tree,
+    type="fan",
+    show.tip.label=FALSE,
+    no.margin=TRUE,
+    edge.color=edge_colors,
+    edge.width=0.65,
+    x.lim=c(-x_padding, x_padding) * preview_radius,
+    y.lim=c(-y_padding, y_padding) * preview_radius
+  )
+  plotted <- get("last_plot.phylo", envir=.PlotPhyloEnv)
+  tip_coordinates <- tibble(
+    genus=tree$tip.label,
+    tree_x=plotted$xx[seq_len(Ntip(tree))],
+    tree_y=plotted$yy[seq_len(Ntip(tree))]
+  ) %>%
+    left_join(tip_data, by="genus")
+
+  tiplabels(
+    pch=21,
+    bg=adjustcolor(tip_colors, alpha.f=0.72),
+    col=tip_colors,
+    lwd=0.55,
+    cex=genus_tip_cex(tip_data$genomes, maximum_genomes)
+  )
+
+  list(
+    tree=tree,
+    tips=tip_coordinates,
+    radius=max(sqrt(tip_coordinates$tree_x^2 + tip_coordinates$tree_y^2))
+  )
+}
+
+annotate_major_phyla <- function(tree_plot, phylum_summary, palette) {
+  radius <- tree_plot$radius
+  label_data <- tree_plot$tips %>%
+    filter(phylum %in% phylum_summary$phylum) %>%
+    mutate(angle=atan2(tree_y, tree_x)) %>%
+    group_by(phylum) %>%
+    summarise(
+      mean_angle=atan2(mean(sin(angle)), mean(cos(angle))),
+      .groups="drop"
+    ) %>%
+    left_join(phylum_summary, by="phylum") %>%
+    mutate(
+      side=if_else(cos(mean_angle) >= 0, 1, -1),
+      anchor_x=radius * cos(mean_angle),
+      anchor_y=radius * sin(mean_angle),
+      label_x=side * radius * 1.18,
+      label_y=radius * 1.02 * sin(mean_angle),
+      colour=unname(palette[phylum])
+    )
+
+  label_data$colour[is.na(label_data$colour)] <- "#667085"
+  for (side_value in c(-1, 1)) {
+    side_rows <- which(label_data$side == side_value)
+    label_data$label_y[side_rows] <- spread_label_y(
+      label_data$label_y[side_rows],
+      lower=-0.91 * radius,
+      upper=0.91 * radius,
+      gap=0.115 * radius
+    )
+  }
+
+  for (row in seq_len(nrow(label_data))) {
+    label <- label_data[row, ]
+    segments(
+      x0=label$anchor_x,
+      y0=label$anchor_y,
+      x1=label$label_x - label$side * 0.025 * radius,
+      y1=label$label_y,
+      col=adjustcolor(label$colour, alpha.f=0.72),
+      lwd=0.75
+    )
+    text(
+      x=label$label_x,
+      y=label$label_y + 0.021 * radius,
+      labels=str_remove(label$phylum, "^p__"),
+      adj=if (label$side == 1) c(0, 0.5) else c(1, 0.5),
+      col=label$colour,
+      font=2,
+      cex=0.70
+    )
+    text(
+      x=label$label_x,
+      y=label$label_y - 0.025 * radius,
+      labels=str_c(format_mag_count(label$genomes), " MAGs"),
+      adj=if (label$side == 1) c(0, 0.5) else c(1, 0.5),
+      col="#475467",
+      cex=0.64
+    )
+  }
+}
+
+draw_phylum_summary <- function(summary_data, palette, title, columns=1) {
+  plot.new()
+  plot.window(xlim=c(0, 1), ylim=c(0, 1))
+  text(0, 0.97, title, adj=c(0, 1), font=2, cex=0.94, col="#1d2939")
+
+  rows_per_column <- ceiling(nrow(summary_data) / columns)
+  for (index in seq_len(nrow(summary_data))) {
+    column <- (index - 1) %/% rows_per_column
+    row <- (index - 1) %% rows_per_column
+    x <- column / columns + 0.025
+    y <- 0.84 - row * (0.78 / max(rows_per_column - 1, 1))
+    colour <- unname(palette[summary_data$phylum[[index]]])
+    if (is.na(colour)) colour <- "#667085"
+    points(x, y, pch=15, col=colour, cex=0.82)
+    text(
+      x + 0.035,
+      y,
+      str_c(
+        str_remove(summary_data$phylum[[index]], "^p__"),
+        " · ",
+        format_mag_count(summary_data$genomes[[index]])
+      ),
+      adj=c(0, 0.5),
+      cex=0.62,
+      col="#344054"
+    )
+  }
+}
+
+draw_annotated_genus_trees <- function(
+    bacteria_tree,
+    archaea_tree,
+    metadata,
+    palette) {
+  bacteria_summary <- metadata %>%
+    filter(domain == "d__Bacteria", !is.na(phylum), phylum != "p__") %>%
+    count(phylum, name="genomes", sort=TRUE)
+  archaea_summary <- metadata %>%
+    filter(domain == "d__Archaea", !is.na(phylum), phylum != "p__") %>%
+    count(phylum, name="genomes", sort=TRUE)
+  major_bacterial_phyla <- bacteria_summary %>% slice_head(n=15)
+  additional_bacterial_phyla <- bacteria_summary %>% slice(-seq_len(15))
+  maximum_genomes <- metadata %>%
+    filter(!is.na(genus), genus != "g__") %>%
+    count(genus) %>%
+    summarise(maximum=max(n)) %>%
+    pull(maximum)
+
+  par(fig=c(0.00, 0.76, 0.00, 1.00), mar=rep(0, 4), xpd=FALSE)
+  bacteria_plot <- draw_genus_fan(
+    bacteria_tree,
+    metadata,
+    palette,
+    maximum_genomes,
+    x_padding=1.56,
+    y_padding=1.18
+  )
+  annotate_major_phyla(bacteria_plot, major_bacterial_phyla, palette)
+  text(
+    -1.48 * bacteria_plot$radius,
+    -1.10 * bacteria_plot$radius,
+    "Bacteria",
+    adj=c(0, 0),
+    font=2,
+    cex=1.28,
+    col="#101828"
+  )
+  text(
+    -1.48 * bacteria_plot$radius,
+    -1.16 * bacteria_plot$radius,
+    str_c(
+      format_mag_count(sum(metadata$domain == "d__Bacteria")),
+      " MAGs · ",
+      format_mag_count(Ntip(bacteria_tree)),
+      " genera"
+    ),
+    adj=c(0, 1),
+    cex=0.78,
+    col="#475467"
+  )
+
+  par(fig=c(0.73, 0.99, 0.60, 0.98), mar=rep(0, 4), new=TRUE)
+  archaea_plot <- draw_genus_fan(
+    archaea_tree,
+    metadata,
+    palette,
+    maximum_genomes,
+    x_padding=1.18,
+    y_padding=1.18
+  )
+  text(
+    -1.12 * archaea_plot$radius,
+    1.10 * archaea_plot$radius,
+    "Archaea",
+    adj=c(0, 1),
+    font=2,
+    cex=1.22,
+    col="#101828"
+  )
+  text(
+    -1.12 * archaea_plot$radius,
+    0.95 * archaea_plot$radius,
+    str_c(
+      format_mag_count(sum(metadata$domain == "d__Archaea")),
+      " MAGs · ",
+      format_mag_count(Ntip(archaea_tree)),
+      " genera"
+    ),
+    adj=c(0, 1),
+    cex=0.78,
+    col="#475467"
+  )
+
+  par(fig=c(0.76, 0.99, 0.43, 0.61), mar=rep(0, 4), new=TRUE)
+  draw_phylum_summary(
+    archaea_summary,
+    palette,
+    title="Archaeal phyla",
+    columns=1
+  )
+
+  par(fig=c(0.76, 0.99, 0.13, 0.43), mar=rep(0, 4), new=TRUE)
+  draw_phylum_summary(
+    additional_bacterial_phyla,
+    palette,
+    title="Additional bacterial phyla",
+    columns=2
+  )
+
+  par(fig=c(0.76, 0.99, 0.01, 0.14), mar=rep(0, 4), new=TRUE)
+  plot.new()
+  plot.window(xlim=c(0, 1), ylim=c(0, 1))
+  text(0, 0.92, "MAGs per genus", adj=c(0, 1), font=2, cex=0.92, col="#1d2939")
+  legend_breaks <- c(25, 100, 250)
+  legend_x <- c(0.08, 0.38, 0.70)
+  for (index in seq_along(legend_breaks)) {
+    points(
+      legend_x[[index]],
+      0.45,
+      pch=21,
+      bg="#344054",
+      col="#344054",
+      cex=genus_tip_cex(legend_breaks[[index]], maximum_genomes)
+    )
+    text(
+      legend_x[[index]] + 0.075,
+      0.45,
+      format_mag_count(legend_breaks[[index]]),
+      adj=c(0, 0.5),
+      cex=0.68,
+      col="#344054"
+    )
+  }
+}
+
+pdf(
+  file=file.path("figure", str_c(release, "_genus_trees_annotated.pdf")),
+  width=13,
+  height=10,
+  bg="white",
+  useDingbats=FALSE
+)
+draw_annotated_genus_trees(
+  ehi_bacteria_tree,
+  ehi_archaea_tree,
+  genome_metadata,
+  phylum_colors
+)
+dev.off()
+
+svg(
+  filename=file.path("figure", str_c(release, "_genus_trees_annotated.svg")),
+  width=13,
+  height=10,
+  bg="white"
+)
+draw_annotated_genus_trees(
+  ehi_bacteria_tree,
+  ehi_archaea_tree,
+  genome_metadata,
+  phylum_colors
+)
+dev.off()
+
+png(
+  filename=file.path("figure", str_c(release, "_genus_trees_annotated.png")),
+  width=13,
+  height=10,
+  units="in",
+  res=300,
+  bg="white"
+)
+draw_annotated_genus_trees(
+  ehi_bacteria_tree,
+  ehi_archaea_tree,
+  genome_metadata,
+  phylum_colors
+)
+dev.off()
+
+draw_annotated_genus_trees(
+  ehi_bacteria_tree,
+  ehi_archaea_tree,
+  genome_metadata,
+  phylum_colors
+)
+```
+
+## Phylogenetically ordered genus - host heatmap
+
+```{r genome_tree_plot, fig.cap="Host distribution of the 100 most abundant microbial genera. Genera follow the GTDB phylogenetic order; the adjacent strip identifies phylum. Circle area and colour both represent the number of recovered MAGs, and empty cells indicate combinations with no recovered MAG.", warning=FALSE, comments="", message=FALSE, fig.width=16, fig.height=16, out.width="100%", dpi=300}
+genus_host_heatmap_data <- genus_host %>%
+  filter(genus %in% genus_top100)
+
+# Prune the already prepared GTDB genus trees to the genera in the heatmap.
+# Bacterial and archaeal marker trees are joined below a display-only root;
+# within-domain topology, rather than the artificial root branch, determines
+# the vertical ordering.
+heatmap_genera <- unique(genus_host_heatmap_data$genus)
+heatmap_trees <- lapply(
+  list(Bacteria=ehi_bacteria_tree, Archaea=ehi_archaea_tree),
+  function(tree) {
+    keep.tip(tree, intersect(tree$tip.label, heatmap_genera))
+  }
+)
+heatmap_trees <- Filter(Negate(is.null), heatmap_trees)
+
+missing_tree_genera <- setdiff(
+  heatmap_genera,
+  unlist(lapply(heatmap_trees, function(tree) tree$tip.label))
+)
+if (length(missing_tree_genera) > 0) {
+  stop(
+    "Displayed genera missing from the GTDB trees: ",
+    str_c(missing_tree_genera, collapse=", ")
+  )
+}
+
+if (length(heatmap_trees) == 1) {
+  genus_tree <- heatmap_trees[[1]]
+} else {
+  genus_tree_newick <- vapply(
+    heatmap_trees,
+    function(tree) str_remove(write.tree(tree), ";$"),
+    character(1)
+  )
+  genus_tree <- read.tree(
+    text=str_c("(", str_c(genus_tree_newick, collapse=","), ");")
+  )
+}
+genus_tree <- ladderize(genus_tree, right=FALSE)
+genus_tree$edge.length <- NULL
+
+# Use the tree's plotted y coordinates everywhere so that branches, labels,
+# phylum annotation, and heatmap cells remain exactly aligned.
+plot.phylo(
+  genus_tree,
+  type="phylogram",
+  use.edge.length=FALSE,
+  show.tip.label=FALSE,
+  direction="rightwards",
+  plot=FALSE
+)
+genus_tree_layout <- get("last_plot.phylo", envir=.PlotPhyloEnv)
+
+genus_tree_nodes <- tibble(
+  node=seq_along(genus_tree_layout$xx),
+  tree_x=genus_tree_layout$xx,
+  genus_y=genus_tree_layout$yy
+)
+
+genus_tree_segments <- as_tibble(
+  genus_tree$edge,
+  .name_repair="minimal"
+) %>%
+  set_names(c("parent", "node")) %>%
+  left_join(
+    genus_tree_nodes %>%
+      rename(parent_x=tree_x, parent_y=genus_y),
+    by=c("parent"="node")
+  ) %>%
+  left_join(genus_tree_nodes, by="node")
+
+genus_tree_verticals <- genus_tree_segments %>%
+  group_by(parent, parent_x) %>%
+  summarise(
+    genus_y_min=min(genus_y),
+    genus_y_max=max(genus_y),
+    .groups="drop"
+  )
+
+genus_tip_positions <- genus_tree_nodes %>%
+  slice_head(n=Ntip(genus_tree)) %>%
+  mutate(genus=genus_tree$tip.label) %>%
+  select(genus, tree_x, genus_y) %>%
+  arrange(genus_y)
+
+tree_label_x <- max(genus_tree_nodes$tree_x) + 0.5
+tree_x_limit <- tree_label_x + max(genus_tree_nodes$tree_x) * 0.75
+
+genus_tree_plot <- ggplot() +
+  geom_segment(
+    data=genus_tree_segments,
+    aes(x=parent_x, xend=tree_x, y=genus_y, yend=genus_y),
+    linewidth=0.35,
+    colour="#667085",
+    lineend="round"
+  ) +
+  geom_segment(
+    data=genus_tree_verticals,
+    aes(
+      x=parent_x,
+      xend=parent_x,
+      y=genus_y_min,
+      yend=genus_y_max
+    ),
+    linewidth=0.35,
+    colour="#667085",
+    lineend="round"
+  ) +
+  geom_segment(
+    data=genus_tip_positions,
+    aes(x=tree_x, xend=tree_label_x, y=genus_y, yend=genus_y),
+    linetype="dotted",
+    linewidth=0.25,
+    colour="#98a2b3"
+  ) +
+  geom_text(
+    data=genus_tip_positions,
+    aes(
+      x=tree_label_x + 0.15,
+      y=genus_y,
+      label=str_remove(genus, "^g__")
+    ),
+    size=2.7,
+    fontface="italic",
+    hjust=0,
+    colour="#1d2939"
+  ) +
+  scale_x_continuous(limits=c(0, tree_x_limit), expand=c(0, 0)) +
+  scale_y_continuous(
+    limits=c(0.5, Ntip(genus_tree) + 0.5),
+    expand=c(0, 0)
+  ) +
+  coord_cartesian(clip="off") +
+  theme_void() +
+  theme(plot.margin=margin(5.5, 3, 5.5, 5.5))
+
+genus_phyla <- genus_host_heatmap_data %>%
+  distinct(genus, phylum) %>%
+  left_join(genus_tip_positions, by="genus")
+
+if (anyDuplicated(genus_phyla$genus)) {
+  stop("At least one displayed genus is assigned to multiple phyla.")
+}
+
+phylum_strip_plot <- genus_phyla %>%
+  ggplot(aes(x="Phylum", y=genus_y, fill=phylum)) +
+  geom_tile(width=0.86, height=0.86) +
+  scale_fill_manual(
+    values=phylum_colors,
+    name="Phylum",
+    labels=function(x) str_remove(x, "^p__"),
+    na.value="#d0d5dd"
+  ) +
+  scale_x_discrete(expand=c(0, 0)) +
+  scale_y_continuous(
+    limits=c(0.5, Ntip(genus_tree) + 0.5),
+    expand=c(0, 0)
+  ) +
+  labs(x=NULL, y=NULL) +
+  theme_minimal(base_size=10.5) +
+  theme(
+    panel.grid=element_blank(),
+    axis.text.y=element_blank(),
+    axis.ticks=element_blank(),
+    axis.text.x=element_text(
+      angle=90,
+      hjust=1,
+      vjust=0.5,
+      colour="#344054"
+    ),
+    plot.margin=margin(5.5, 1.5, 5.5, 1.5)
+  )
+
+heatmap_hosts <- host_metadata %>%
+  filter(host_species %in% genus_host_heatmap_data$host_species) %>%
+  distinct(host_species, host_class) %>%
+  arrange(host_class, host_species)
+
+host_levels <- heatmap_hosts$host_species
+host_class_levels <- unique(heatmap_hosts$host_class)
+
+genus_host_cells <- expand_grid(
+  genus=genus_tip_positions$genus,
+  host_species=host_levels
+) %>%
+  left_join(genus_tip_positions, by="genus") %>%
+  left_join(heatmap_hosts, by="host_species") %>%
+  left_join(
+    genus_host_heatmap_data %>% select(genus, host_species, genomes),
+    by=c("genus", "host_species")
+  ) %>%
+  mutate(
+    genomes=replace_na(genomes, 0L),
+    host_species=factor(host_species, levels=host_levels),
+    host_class=factor(host_class, levels=host_class_levels)
+  )
+
+genus_host_dot_heatmap <- ggplot(
+  genus_host_cells,
+  aes(x=host_species, y=genus_y)
+) +
+  facet_nested(. ~ host_class, space="free_x", scales="free_x") +
+  geom_tile(
+    width=0.92,
+    height=0.86,
+    fill="#f2f4f7",
+    colour="white",
+    linewidth=0.25
+  ) +
+  geom_point(
+    data=filter(genus_host_cells, genomes > 0),
+    aes(size=genomes, fill=genomes),
+    shape=21,
+    stroke=0.2,
+    colour="white"
+  ) +
+  scale_fill_gradientn(
+    colours=c("#cdebf1", "#61b6c9", "#167d9a", "#073b66"),
+    trans="sqrt",
+    name="Recovered MAGs"
+  ) +
+  scale_size_area(max_size=5.2, guide="none") +
+  scale_x_discrete(expand=c(0, 0)) +
+  scale_y_continuous(
+    limits=c(0.5, Ntip(genus_tree) + 0.5),
+    expand=c(0, 0)
+  ) +
+  labs(x=NULL, y=NULL) +
+  theme_minimal(base_size=10.5) +
+  theme(
+    panel.grid=element_blank(),
+    axis.text.y=element_blank(),
+    axis.ticks=element_blank(),
+    axis.text.x=element_text(
+      size=9.5,
+      angle=55,
+      hjust=1,
+      vjust=1,
+      face="italic",
+      colour="#344054"
+    ),
+    strip.background=element_rect(fill="#e4e9ef", colour="white"),
+    strip.text=element_text(size=9.5, face="bold", colour="#344054"),
+    panel.spacing.x=unit(1.5, "mm"),
+    plot.margin=margin(5.5, 5.5, 5.5, 1.5),
+    legend.position="right"
+  )
+
+genus_host_heatmap <- wrap_plots(
+  genus_tree_plot,
+  phylum_strip_plot,
+  genus_host_dot_heatmap,
+  nrow=1,
+  widths=c(3.5, 0.35, 8),
+  guides="collect"
+)
+
+ggsave(
+  filename=file.path("figure", str_c(release, "_genus_host_heatmap.svg")),
+  plot=genus_host_heatmap,
+  width=16,
+  height=16,
+  units="in",
+  bg="white"
+)
+ggsave(
+  filename=file.path("figure", str_c(release, "_genus_host_heatmap.pdf")),
+  plot=genus_host_heatmap,
+  width=16,
+  height=16,
+  units="in",
+  bg="white"
+)
+ggsave(
+  filename=file.path("figure", str_c(release, "_genus_host_heatmap.png")),
+  plot=genus_host_heatmap,
+  width=16,
+  height=16,
+  units="in",
+  dpi=300,
+  bg="white"
+)
+
+genus_host_heatmap
+```

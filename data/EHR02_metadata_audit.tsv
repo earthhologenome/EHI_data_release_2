@@ -1,0 +1,14 @@
+severity	area	check	affected	detail
+error	raw data	missing required total GB	2	Metagenomic data statistics require preprocessings.bases_pre_fastp.
+error	raw data	missing required host GB	2	Metagenomic composition statistics require preprocessings.host_bases.
+error	raw data	missing required metagenomic GB	2	Metagenomic composition statistics require preprocessings.metagenomic_bases.
+info	raw data	genomic-only without preprocessing	5	Expected: genomic-only records are excluded from metagenomic composition statistics.
+warning	raw data	missing SingleM fraction	168	The export remains usable, but microbial-fraction summaries will be incomplete.
+warning	raw data	missing Nonpareil completeness	8	The export remains usable, but Nonpareil summaries will be incomplete.
+warning	assemblies	individual coassembly spans several specimens	14	These coassemblies are released as single-individual assemblies, but their samples link to more than one specimen. Check the sample -> capture -> specimen links.
+warning	assemblies	missing or inconsistent explicit release	389	Release membership was derived through assembly sample -> preprocessing -> hologenome. Populate assemblies.release_code so other core exports can identify EHR02 MAGs.
+warning	MAGs	missing phylum	75	MAG summaries or plots using phylum will be incomplete.
+warning	MAGs	missing genus	75	MAG summaries or plots using genus will be incomplete.
+schema_gap	sample metadata	sample_origin	874	Not stored in ehi-core. The current statistics and visualisations do not use it.
+schema_gap	sample metadata	freshness	874	Not stored in ehi-core. The current statistics and visualisations do not use it.
+schema_gap	sample metadata	time_to_freezing	874	Not stored in ehi-core. The current statistics and visualisations do not use it.

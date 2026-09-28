@@ -1,0 +1,265 @@
+# Data statistics
+
+```{r load_metadata, warning=FALSE, comments="", message=FALSE}
+rawdata_metadata <- read_tsv(file=str_c("data/",release,"_rawdata.tsv"))
+datasets <- rawdata_metadata$rawdata_id
+sample_metadata <- read_tsv(file=str_c("data/",release,"_sample.tsv"))
+capture_metadata <- read_tsv(file=str_c("data/",release,"_capture.tsv"))
+specimen_metadata <- read_tsv(file=str_c("data/",release,"_specimen.tsv"))
+sampling_metadata <- read_tsv(file=str_c("data/",release,"_sampling.tsv"))
+host_metadata <- read_tsv(file=str_c("data/",release,"_host.tsv"))
+
+composition_metadata <- rawdata_metadata %>%
+  filter(preprocessing_required)
+```
+
+## Amount of data
+
+### Absolute total data
+
+```{r rawdata_absolute, warning=FALSE, comments="", message=FALSE}
+rawdata_metadata %>%
+  summarise(
+    release_hologenomes=n(),
+    genomic_only=sum(!preprocessing_required),
+    metagenomic=sum(preprocessing_required)
+  ) %>%
+  tt()
+
+composition_metadata %>%
+  summarise(
+    total=sum(total_gb, na.rm=TRUE),
+    host=sum(host_gb, na.rm=TRUE),
+    metagenomic=sum(metagenomic_gb, na.rm=TRUE),
+    lowqual=sum(lowqual_gb, na.rm=TRUE)
+  ) %>%
+  tt()
+```
+
+### Relative total data
+
+```{r rawdata_relative, warning=FALSE, comments="", message=FALSE}
+composition_metadata %>%
+  summarise(total=sum(total_gb, na.rm=TRUE),host=sum(host_gb, na.rm=TRUE),metagenomic=sum(metagenomic_gb, na.rm=TRUE),lowqual=sum(lowqual_gb, na.rm=TRUE)) %>%
+  mutate(host=host/total*100,metagenomic=metagenomic/total*100,lowqual=lowqual/total*100) %>% 
+  mutate(total=total/total*100) %>% 
+  tt()
+```
+
+### Per-sample data
+
+```{r rawdata_absolute_persample, warning=FALSE, comments="", message=FALSE}
+composition_metadata %>%
+  summarise(
+    available=sum(!is.na(total_gb)),
+    total=mean(total_gb, na.rm=TRUE),
+    total_sd=sd(total_gb, na.rm=TRUE),
+    host=mean(host_gb, na.rm=TRUE),
+    metagenomic=mean(metagenomic_gb, na.rm=TRUE),
+    lowqual=mean(lowqual_gb, na.rm=TRUE)
+  ) %>%
+  tt()
+```
+
+### Per-sample relative data
+
+```{r rawdata_absolute_persample_relative, warning=FALSE, comments="", message=FALSE}
+composition_metadata %>%
+  mutate(host_rel=host_gb/total_gb*100,
+         metagenomic_rel=metagenomic_gb/total_gb*100,
+         lowqual_rel=lowqual_gb/total_gb*100) %>%
+  filter(host_rel>=0 & metagenomic_rel>=0, lowqual_rel>=0) %>% 
+  summarise(host_mean=mean(host_rel),
+            host_sd=sd(host_rel),
+            metagenomic_mean=mean(metagenomic_rel),
+            metagenomic_sd=sd(metagenomic_rel),
+            lowqual_mean=mean(lowqual_rel),
+            lowqual_sd=sd(lowqual_rel)) %>%
+  tt()
+```
+
+## Amount of samples
+
+```{r host_species_summary, warning=FALSE, comments="", message=FALSE}
+summary_table <- sampling_metadata %>% 
+  separate_rows(capture_id, sep = ", ") %>%
+  right_join(capture_metadata,by="capture_id") %>%
+  select(-capture_id) %>%
+  right_join(specimen_metadata,by="specimen_id") %>%
+  inner_join(host_metadata,by="host_species") %>%
+  select(-capture_id) %>%
+  separate_rows(sample_id, sep = ", ") %>%
+  right_join(sample_metadata,by="sample_id") %>%
+  select(-rawdata_id) %>%
+  right_join(rawdata_metadata,by="sample_id") %>%
+  separate_rows(rawdata_id, sep = ", ") %>%
+  filter(rawdata_id %in% datasets)
+
+summary_table %>% 
+  group_by(host_species,host_order,host_class) %>% 
+  summarise(events=n_distinct(sampling_id),individuals=n_distinct(specimen_id),samples=n_distinct(sample_id),data=sum(total_gb, na.rm=TRUE)) %>% 
+  tt()
+```
+
+## Sample type statistics
+```{r sample_type_summary, warning=FALSE, comments="", message=FALSE}
+summary_table %>% 
+  mutate(sample_type=ifelse(sample_type=="Skin swab: dorsal","Skin swab",sample_type),
+         sample_type=ifelse(sample_type=="Skin swab: ventral","Skin swab",sample_type)) %>% 
+  group_by(sample_type) %>% 
+  summarise(samples=n()) %>% 
+  tt()
+```
+
+## Country statistics
+
+```{r number_countries, warning=FALSE, comments="", message=FALSE}
+sampling_metadata %>%
+  pull(country) %>%
+  unique() %>% 
+  length()
+
+country_summary <- summary_table %>%
+  filter(!is.na(country), country != "") %>%
+  count(country, name="samples") %>%
+  mutate(
+    # Natural Earth uses this name for the USA.
+    map_country=recode(country, "USA"="United States of America")
+  )
+
+country_summary %>%
+  select(country, samples) %>%
+  tt()
+```
+
+### Geographic distribution
+
+The countries represented in the second data release are shaded by their
+number of samples. Labels are placed automatically and can be adjusted in the
+vector files written to the `figure` directory.
+
+```{r world-map, fig.cap="Geographic distribution of samples in the second EHI data release. Country colour and labels show the number of samples.", fig.width=13, fig.height=6.5, out.width="100%", dpi=300, warning=FALSE, message=FALSE}
+world_map <- rnaturalearth::ne_countries(
+  scale="small",
+  returnclass="sf"
+) %>%
+  filter(admin != "Antarctica")
+
+unmatched_countries <- country_summary %>%
+  anti_join(
+    world_map %>%
+      sf::st_drop_geometry() %>%
+      distinct(admin),
+    by=c("map_country"="admin")
+  )
+
+if (nrow(unmatched_countries) > 0) {
+  warning(
+    "Countries missing from the map: ",
+    paste(unmatched_countries$country, collapse=", ")
+  )
+}
+
+map_crs <- "ESRI:54030" # Robinson projection
+
+world_map <- world_map %>%
+  left_join(country_summary, by=c("admin"="map_country")) %>%
+  sf::st_transform(map_crs)
+
+country_labels <- world_map %>%
+  filter(!is.na(samples)) %>%
+  sf::st_point_on_surface()
+
+label_coordinates <- sf::st_coordinates(country_labels)
+
+country_labels <- country_labels %>%
+  sf::st_drop_geometry() %>%
+  mutate(
+    x=label_coordinates[, "X"],
+    y=label_coordinates[, "Y"],
+    label=str_c(country, "\nn = ", format(samples, big.mark=",", trim=TRUE)),
+    label_colour=if_else(
+      country %in% c("USA", "Australia"),
+      "#FFFFFF",
+      "#111111"
+    )
+  )
+
+world_map_plot <- ggplot(world_map) +
+  geom_sf(
+    aes(fill=samples),
+    colour="#A9AFB3",
+    linewidth=0.18
+  ) +
+  scale_fill_gradient(
+    name="Number of\nsamples",
+    low="#FDE7A0",
+    high="#17386D",
+    na.value="#EEF0F2",
+    limits=c(0, max(country_summary$samples)),
+    breaks=pretty(c(0, max(country_summary$samples)), n=5)
+  ) +
+  geom_text_repel(
+    data=country_labels,
+    aes(x=x, y=y, label=label, colour=label_colour),
+    seed=2025,
+    size=3.0,
+    lineheight=0.9,
+    segment.colour="#333333",
+    segment.size=0.3,
+    min.segment.length=0,
+    box.padding=0.35,
+    point.padding=0.15,
+    max.overlaps=Inf,
+    max.time=5,
+    show.legend=FALSE
+  ) +
+  scale_colour_identity() +
+  coord_sf(datum=NA, expand=FALSE, clip="off") +
+  guides(
+    fill=guide_colourbar(
+      barheight=grid::unit(35, "mm"),
+      barwidth=grid::unit(4, "mm"),
+      ticks.colour="#333333",
+      frame.colour="#333333"
+    )
+  ) +
+  theme_void(base_size=11) +
+  theme(
+    legend.position="right",
+    legend.title=element_text(size=10),
+    legend.text=element_text(size=9),
+    plot.margin=margin(8, 12, 8, 8)
+  )
+
+ggsave(
+  filename=file.path("figure", str_c(release, "_world_map.svg")),
+  plot=world_map_plot,
+  width=13,
+  height=6.5,
+  units="in",
+  device=svglite::svglite
+)
+
+ggsave(
+  filename=file.path("figure", str_c(release, "_world_map.pdf")),
+  plot=world_map_plot,
+  width=13,
+  height=6.5,
+  units="in",
+  device=grDevices::cairo_pdf
+)
+
+world_map_plot
+```
+
+
+## Environmental representation
+
+```{r number_environments, warning=FALSE, comments="", message=FALSE}
+sampling_metadata %>%
+  group_by(biome) %>% 
+  summarise(count = n()) %>% 
+  arrange(-count) %>% 
+  tt()
+```

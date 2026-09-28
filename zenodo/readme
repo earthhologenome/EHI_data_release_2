@@ -1,0 +1,8 @@
+A four-part tarball containing the FASTA files of the 11,538 metagenome-assembled genomes (MAGs) published in the 2nd Data Release of the Earth Hologenome Initiative.
+
+Reconstruct and decompress the archive with:
+
+cat ehi_data_release_2_mags.tar.gz.part-* > ehi_data_release_2_mags.tar.gz
+tar -xvzf ehi_data_release_2_mags.tar.gz
+
+The reconstructed archive is 7,138,772,352 bytes and has MD5 checksum cb7da06d12469fcb786e5536cc69a4b8.

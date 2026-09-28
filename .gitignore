@@ -1,0 +1,21 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.DS_Store
+.Renviron
+.env
+Rplots.pdf
+__pycache__/
+*.py[cod]
+
+# Locally staged Zenodo payloads and source URLs. The small metadata/readme
+# files remain tracked; multi-GB archives and pre-publication ERDA links do not.
+zenodo/*.tar
+zenodo/*.tar.gz
+zenodo/*.tar.gz.part-*
+zenodo/*.part
+zenodo/*_mag_sources.tsv
+zenodo/*.manifest.tsv
+zenodo/*.checksums.txt
+zenodo/zenodo_draft.json

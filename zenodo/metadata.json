@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "title": "Earth Hologenome Initiative (EHI) Data Release 2: sequence files of metagenome assembled genomes (MAGs)",
+    "upload_type": "dataset",
+    "description": "<p>A four-part tarball containing the FASTA files of the 11,538 metagenome-assembled genomes (MAGs) published in the 2nd Data Release of the Earth Hologenome Initiative.</p><p>Reconstruct and decompress the archive with:<br><code>cat ehi_data_release_2_mags.tar.gz.part-* &gt; ehi_data_release_2_mags.tar.gz</code><br><code>tar -xvzf ehi_data_release_2_mags.tar.gz</code></p>",
+    "creators": [
+      {
+        "name": "Alberdi, Antton"
+      }
+    ],
+    "access_right": "open",
+    "license": "cc-zero",
+    "communities": [
+      {
+        "identifier": "ehi"
+      }
+    ],
+    "prereserve_doi": true
+  }
+}

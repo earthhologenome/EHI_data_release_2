@@ -1,0 +1,9 @@
+delete_merged_file: true
+rmd_files:
+  - index.Rmd
+  - 02_data_statistics.Rmd
+  - 03_host_tree.Rmd
+  - 04_mag_statistics.Rmd
+language:
+  ui:
+    chapter_name: ""

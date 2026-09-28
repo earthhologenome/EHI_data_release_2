@@ -1,0 +1,29 @@
+host_species	taxid	host_genus	host_family	host_order	host_class
+Apodemus flavicollis	54292	Apodemus	Muridae	Rodentia	Mammalia
+Apodemus sylvaticus	10129	Apodemus	Muridae	Rodentia	Mammalia
+Bombina sp.	8344	Bombina	Bombinatoridae	Anura	Amphibia
+Canis familiaris	9615	Canis	Canidae	Carnivora	Mammalia
+Cathartes aura	43455	Cathartes	Cathartidae	Accipitriformes	Aves
+Clethrionomys rutilus	537920	Clethrionomys	Cricetidae	Rodentia	Mammalia
+Coragyps atratus	33614	Coragyps	Cathartidae	Accipitriformes	Aves
+Iberolacerta aranica	178817	Iberolacerta	Lacertidae	Squamata	Reptilia
+Iberolacerta bonnali	178819	Iberolacerta	Lacertidae	Squamata	Reptilia
+Lacerta viridis	65476	Lacerta	Lacertidae	Squamata	Reptilia
+Lasiorhinus latifrons	30668	Lasiorhinus	Vombatidae	Diprotodontia	Mammalia
+Lissotriton vulgaris	8324	Lissotriton	Salamandridae	Caudata	Amphibia
+Marmota flaviventris	93162	Marmota	Sciuridae	Rodentia	Mammalia
+Myodes glareolus	447135	Myodes	Cricetidae	Rodentia	Mammalia
+Myodes rufocanus	527686	Myodes	Cricetidae	Rodentia	Mammalia
+Myotis bechsteinii	59462	Myotis	Vespertilionidae	Chiroptera	Mammalia
+Perisoreus infaustus	56787	Perisoreus	Corvidae	Passeriformes	Aves
+Peromyscus maniculatus	10042	Peromyscus	Cricetidae	Rodentia	Mammalia
+Plecotus auritus	61862	Plecotus	Vespertilionidae	Chiroptera	Mammalia
+Psammodromus manuelae	NA	Psammodromus	Lacertidae	Squamata	Reptilia
+Rattus lutreolus	472760	Rattus	Muridae	Rodentia	Mammalia
+Rattus rattus	10117	Rattus	Muridae	Rodentia	Mammalia
+Salamandra atra	57570	Salamandra	Salamandridae	Caudata	Amphibia
+Salamandra salamandra gallaica	126663	Salamandra	Salamandridae	Caudata	Amphibia
+Sciurus vulgaris	55149	Sciurus	Sciuridae	Rodentia	Mammalia
+Timon lepidus	399537	Timon	Lacertidae	Squamata	Reptilia
+Trichosurus vulpecula	9337	Trichosurus	Phalangeridae	Diprotodontia	Mammalia
+Vombatus ursinus	29139	Vombatus	Vombatidae	Diprotodontia	Mammalia
