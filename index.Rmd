@@ -1,8 +1,8 @@
 ---
-title: "Earth Hologenome Initiative"
-subtitle: "Second Data Release"
+title: "Earth Hologenome Initiative | Brenner et al. 2027"
+subtitle: "The Earth Hologenome Initiative: Data Release 2"
 author:
-  - Antton Alberdi^[University of Copenhagen, antton.alberdi@sund.ku.dk]
+  - Elsa Brenner, Nanna Gaun, Garazi Martin, Lucas Padilha, Jonas Lauritsen, Carlotta Pietroni, Raphael Eisenhofer, Isolde van Riemsdijk, Antoni Arrizabalaga, Fabien Aubret, Jack Bamber, Rachel A. Berg, Daniel T Blumstein, Zbigniew Borowski, Scott K. Brown, Helen Butler, João Carvalho, Sinah Drenske, Joana M Fernandes, Eduardo Ferreira, Gary R Graves, Michael Griesser, Anders J Hansen, Emilie A Hardouin, Kathy H. Hodder, Menna Jones, Javier Juste, Kawinwit Kittipalawattanapol, Shannon Kleemann, Madeline S. Koeplin, Stephanie Kramer-Schadt, Xavier Lambin, Conny Landgraf, Colin Lawton, Julie Marmet, Adam Joseph Doncheff Marques, Maria Vittoria Mazzamuto, Baily McCulloch, Kate McMahon, Mariana Meneses-Ribeiro, Cristian N Waggershauser, Pirmin Nietlisbach, Marina Palacios, Oriol Palau, David Peacock, Constant Perry, Orly Razgour, Emily Reilly, Emma Roberts, Rita Gomes Rocha, Ireneusz Ruczyński, Hazel Ryan, Tom Sarraude, Craig Shuttleworth, Rune Sørås, Emina Šunje, Alex Sutton, David Taggart, Yu Takahata, Nia Toshkova, Guillermo Velo-Anton, Marc Vilella, Miyako H Warrington, Antje Werner, Daniel Whitby, Antton Alberdi^[University of Copenhagen, antton.alberdi@sund.ku.dk], Ostaizka Aizpurua
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -32,6 +32,10 @@ This webbook contains summary statistics and visualisations for the second EHI d
 The ENA accession numbers can be found in the sample and raw data metadata tables stored in the GitHub repository:
 
 > https://github.com/earthhologenome/EHI_data_release_2/tree/main/data
+
+The FASTA files of the 11,538 metagenome-assembled genomes (MAGs) are archived in Zenodo:
+
+> https://doi.org/10.5281/zenodo.23011783
 
 ## Prepare the R environment
 

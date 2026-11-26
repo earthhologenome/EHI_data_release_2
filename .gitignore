@@ -19,3 +19,13 @@ zenodo/*_mag_sources.tsv
 zenodo/*.manifest.tsv
 zenodo/*.checksums.txt
 zenodo/zenodo_draft.json
+
+# Codeome agent jobs
+.codeome/jobs/
+.codeome/worktrees/
+.codeome/plans/
+.codeome/context/
+.codeome/touched/
+.codeome/inbox/
+.codeome/outbox/
+.codeome/inbox-support.json

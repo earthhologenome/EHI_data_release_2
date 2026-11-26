@@ -6,6 +6,10 @@ The raw code used for data analysis is in the **Rmd** files stored in the root d
 
 [earthhologenome.github.io/EHI_data_release_2](https://earthhologenome.github.io/EHI_data_release_2)
 
+The FASTA files of the 11,538 metagenome-assembled genomes (MAGs) are archived in Zenodo:
+
+[doi.org/10.5281/zenodo.23011783](https://doi.org/10.5281/zenodo.23011783)
+
 While the webbook provides a user-friendly overview of the procedures, analyses can be directly reproduced using the Rmd documents. Note that the code chunks that require heavy computation have been tuned off using 'eval=FALSE'. To re-render the webbook, you can use the following code:
 
 
