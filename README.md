@@ -1,5 +1,7 @@
 # 2nd EHI Data Release
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24549878.svg)](https://doi.org/10.5281/zenodo.24549878)
+
 This is the repository of the 2nd EHI Data Release.
 
 The raw code used for data analysis is in the **Rmd** files stored in the root directory of this repository, while the bookdown-rendered webbook is available at:
